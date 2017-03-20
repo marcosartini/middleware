@@ -9,6 +9,8 @@ components LedsC;
 components ActiveMessageC;
 components CollectionC;
 components new TimerMilliC() as Timer0;
+components HDemoSensor;
+components TDemoSensor;
 
 
 AppP.Boot -> MainC;
@@ -16,6 +18,8 @@ AppP.Timer -> Timer0;
 AppP.Leds -> LedsC;
 AppP.RoutingControl -> CollectionC;
 AppP.RootControl -> CollectionC;
+AppP.Temperature -> TDemoSensor;
+AppP.Humidity -> HDemoSensor;
 
 AppP.Send -> CollectionC.Send[AM_COLLECT_MSG];
 AppP.Receive -> CollectionC.Receive[AM_AVG_MSG];
