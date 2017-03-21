@@ -10,7 +10,8 @@ module AppP
 	uses interface Read<double> as Humidity;
 	uses interface AMSend;
 	uses interface AMPacket;
-	uses interface Receive;
+	uses interface Receive as ReceiveCollect;
+	uses interface Receive as ReceiveAvg;
 	uses interface Packet;
 	uses interface SplitControl as AMControl;
 	uses interface StdControl as RoutingControl;
@@ -50,7 +51,7 @@ event void RadioControl.startDone(error_t err){
 	
 	//non necessario ma comunque qui ci va qualcosa per il nodo 0 che manderà le collect
 	if(TOS_NODE_ID == 0)
-		call Timer.startPeriodic(64);
+		call Timer.startPeriodic(64); //un altro timer però
 }
 
 event void RadioControl.stopDone(error_t err) {}
@@ -86,13 +87,39 @@ event void Humidity.readDone(error_t err, double val){
 	}
 }
 
-event message_t * Receive(message_t * msg, void* payload, uint8_t len){
+event message_t * ReceiveAvg(message_t * msg, void* payload, uint8_t len){
 	
 	am_addr_t from = call AMPacket.source(msg); //get the sender of the message
 	sensor_reading_t* data = (sensor_reading_t*)payload; //serve?
 	
-	return msg; //ma serve davvero?
+		
+	//se è un messaggio di avg, e non lo ha già inoltrato, lo deve mandare al sink attraverso gli altri nodi, con il tree
 	
+	
+	//comunque gli inoltri vanno fatti asincroni? forse sì, ma non per forza: posso schedulare task che lo facciano. 
+	//da fare "asincrona" è la ricezione dei messaggi, ma forse lo è già se quando capisco il tipo ricevuto programmo un task che fa quel che deve
+	
+	//DA RISOLVERE: capire come inoltrare in multi-hop attraverso l'albero, e se inoltrare o scartare (id messaggio?)
+
+	
+	
+	
+}
+
+event message_t * ReceiveCollect(message_t * msg, void* payload, uint8_t len){
+	
+	am_addr_t from = call AMPacket.source(msg); //get the sender of the message
+	sensor_reading_t* data = (sensor_reading_t*)payload; //serve?
+	
+	//se è un messaggio di tipo collect, scatena eventi interni e comunque manda in broadcast il COLLECT agli altri nodi
+	post forwardCollect();
+	
+	post computeAverages();
+	post sendDataAverage();
+	
+	//DA RISOLVERE: capire come inoltrare in multi-hop attraverso l'albero, e se inoltrare o scartare (id messaggio?)
+	
+	//devo costruire il tree????
 	
 	
 }

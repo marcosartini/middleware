@@ -22,9 +22,9 @@ AppP.Temperature -> TDemoSensor;
 AppP.Humidity -> HDemoSensor;
 
 AppP.Send -> CollectionC.Send[AM_COLLECT_MSG];
-AppP.Receive -> CollectionC.Receive[AM_AVG_MSG];
+AppP.ReceiveAvg -> CollectionC.Receive[AM_AVG_MSG];
 AppP.Send -> CollectionC.Send[AM_AVG_MSG];
-AppP.Receive -> CollectionC.Receive[AM_COLLECT_MSG];
+AppP.ReceiveCollect -> CollectionC.Receive[AM_COLLECT_MSG];
 AppP.Packet -> CollectionC;
 
 
