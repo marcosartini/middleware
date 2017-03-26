@@ -22,15 +22,17 @@ AppP.Temperature -> TDemoSensor;
 AppP.Humidity -> HDemoSensor;
 
 AppP.Send -> CollectionC.Send[AM_COLLECT_MSG];
-AppP.ReceiveAvg -> CollectionC.Receive[AM_AVG_MSG];
+#AppP.ReceiveAvg -> CollectionC.Receive[AM_AVG_MSG];
 AppP.Send -> CollectionC.Send[AM_AVG_MSG];
 AppP.ReceiveCollect -> CollectionC.Receive[AM_COLLECT_MSG];
 AppP.Packet -> CollectionC;
 
+components new AMReceiverC(AM_AVG_MSG) as ReceiveAverage;
+AppP.ReceiveAvg -> ReceiveAverage;
 
   App.Packet -> AMSenderC;
   App.AMPacket -> AMSenderC;
-  App.AMControl -> ActiveMessageC;
+  App.RadioControl -> ActiveMessageC;
   App.AMSend -> AMSenderC;
   App.Receive -> AMReceiverC;
 }

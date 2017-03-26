@@ -6,14 +6,14 @@ module AppP
 	uses interface Boot;
 	uses interface Leds;
 	uses interface Timer<TMilli>;
-	uses interface Read<double> as Temperature;
-	uses interface Read<double> as Humidity;
+	uses interface Read<float> as Temperature;
+	uses interface Read<float> as Humidity;
 	uses interface AMSend;
 	uses interface AMPacket;
 	uses interface Receive as ReceiveCollect;
 	uses interface Receive as ReceiveAvg;
 	uses interface Packet;
-	uses interface SplitControl as AMControl;
+	uses interface SplitControl as RadioControl;
 	uses interface StdControl as RoutingControl;
 	uses interface RootControl;
 	
@@ -23,15 +23,24 @@ implementation {
 	
 
 	
-	double sumT = 0;
+	float sumT = 0;
 	uint16_t nT=0; //number of temperature reads
-	double sumH = 0;
+	float sumH = 0;
 	uint16_t nH=0; //number of humidity reads
 	
-	double avgT = 0;
-	double avgH = 0;
+	float avgT = 0;
+	float avgH = 0;
 	
 	message_t output;
+
+task void readTemperature(){
+	if(call Temperature.read() != SUCCESS)
+		post readTemperature();
+}
+task void readHumidity(){
+	if(call Humidity.read() != SUCCESS)
+		post readHumidity();
+}
 	
 event void Boot.booted(){
 	dbg("default","%s | Node %d started\n", sim_time_string(), TOS_NODE_ID);
@@ -54,7 +63,15 @@ event void RadioControl.startDone(error_t err){
 		call Timer.startPeriodic(64); //un altro timer però
 }
 
-event void RadioControl.stopDone(error_t err) {}
+/****** ALTERNATIVA 
+event void RadioControl.startDone(error_t err){
+	if(TOS_NODE_ID == 0)
+		call RootControl.setRoot();
+		call RoutingControl.start();
+}*****/
+*/
+
+event void RadioControl.stopDone(error_t err) { }
 
 //controllare che effettivamente temp e hum siano lete come conseguenti immediatamente, non proprio schedulate a caso
 event void Timer.fired(){
@@ -62,16 +79,7 @@ event void Timer.fired(){
 		post readHumidity();
 }
 
-task void readTemperature(){
-	if(call Temperature.read() != SUCCESS)
-		post readTemperature;
-}
-task void readHumidity(){
-	if(call Humidity.read() != SUCCESS)
-		post readHumidity;
-}
-
-event void Temperature.readDone(error_t err, double val){
+event void Temperature.readDone(error_t err, float val){
 	if(err == SUCCESS){
 		sumT = sumT + val;
 		nT++;
@@ -79,7 +87,7 @@ event void Temperature.readDone(error_t err, double val){
 	}
 }
 
-event void Humidity.readDone(error_t err, double val){
+event void Humidity.readDone(error_t err, float val){
 	if(err == SUCCESS){
 		sumH = sumH + val;
 		nH++;
@@ -87,10 +95,10 @@ event void Humidity.readDone(error_t err, double val){
 	}
 }
 
-event message_t * ReceiveAvg(message_t * msg, void* payload, uint8_t len){
+event message_t * ReceiveAvg.receive(message_t * msg, void* payload, uint8_t len){
 	
 	am_addr_t from = call AMPacket.source(msg); //get the sender of the message
-	sensor_reading_t* data = (sensor_reading_t*)payload; //serve?
+	//sensor_reading_t* data = (sensor_reading_t*)payload; //serve?
 	
 		
 	//se è un messaggio di avg, e non lo ha già inoltrato, lo deve mandare al sink attraverso gli altri nodi, con il tree
@@ -106,10 +114,10 @@ event message_t * ReceiveAvg(message_t * msg, void* payload, uint8_t len){
 	
 }
 
-event message_t * ReceiveCollect(message_t * msg, void* payload, uint8_t len){
+event message_t * ReceiveCollect.receive(message_t * msg, void* payload, uint8_t len){
 	
 	am_addr_t from = call AMPacket.source(msg); //get the sender of the message
-	sensor_reading_t* data = (sensor_reading_t*)payload; //serve?
+	//sensor_reading_t* data = (sensor_reading_t*)payload; //serve?
 	
 	//se è un messaggio di tipo collect, scatena eventi interni e comunque manda in broadcast il COLLECT agli altri nodi
 	post forwardCollect();
@@ -132,13 +140,13 @@ task void computeAverages(){
 
 task void sendDataAverage(){
 	
-	sensor_reading_t * reading = (sensor_reading_t*) call Packet.getPayload(&output, sizeof(sensor_reading_t));
+	avg_msg_t * reading = (avg_msg_t*) call Packet.getPayload(&output, sizeof(avg_msg_t));
 	
-	reading -> avgTemperature = avgT;
-	reading -> avgHumidity = avgH;
+	reading -> temperature = avgT;
+	reading -> humidity = avgH;
 	reading -> node_id = TOS_NODE_ID;
 	
-	if(call AMSend.send(AM_BROADCAST_ADDR, &output, sizeof(sensor_reading_t)) != SUCCESS)
+	if(call AMSend.send(AM_BROADCAST_ADDR, &output, sizeof(avg_msg_t)) != SUCCESS)
 		post sendDataAverage(); //if the radio is busy, it retries to send
 	
 	
@@ -161,16 +169,12 @@ event void AMSend.sendDone(message_t* msg, error_t err){
 	
 }
 
-event void RadioControl.startDone(error_t err){
-	if(TOS_NODE_ID == 0)
-		call RootControl.setRoot();
-		call RoutingControl.start();
-}
+
 
 task void sendPacket(){
 	result_t err call Send.send(&msg, size(MyMsg));
 	
-	...
+	//...
 }
 
 }
