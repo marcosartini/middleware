@@ -5,6 +5,8 @@
 enum{
 	AM_AVG_MSG = 231,
 	AM_COLLECT_MSG = 241,
+	COL_AVG = 242,
+	DIS_COLLECT = 243,
 	TMILLI_PERIOD = 1024
 };
 /*

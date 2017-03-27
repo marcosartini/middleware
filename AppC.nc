@@ -21,6 +21,7 @@ AppP.RootControl -> CollectionC;
 AppP.Temperature -> TDemoSensor;
 AppP.Humidity -> HDemoSensor;
 
+/*
 AppP.Send -> CollectionC.Send[AM_COLLECT_MSG];
 #AppP.ReceiveAvg -> CollectionC.Receive[AM_AVG_MSG];
 AppP.Send -> CollectionC.Send[AM_AVG_MSG];
@@ -35,4 +36,27 @@ AppP.ReceiveAvg -> ReceiveAverage;
   App.RadioControl -> ActiveMessageC;
   App.AMSend -> AMSenderC;
   App.Receive -> AMReceiverC;
+  */
+  
+    AntiTheftC.LowPowerListening -> Radio;
+    components DisseminationC;
+  AntiTheftC.DisseminationControl -> DisseminationC;
+
+  /* Instantiate and wire our settings dissemination service */
+  components new DisseminatorC(collection_t, DIS_COLLECT);
+  AntiTheftC.SettingsValue -> DisseminatorC;
+
+  /* Instantiate and wire our collection service for theft alerts */
+  components CollectionC, new CollectionSenderC(COL_AVG) as AlertSender;
+
+  AntiTheftC.AvgRoot -> AvgSender;
+  AntiTheftC.CollectionControl -> CollectionC;
+
+  /* Instantiate and wire our local radio-broadcast theft alert and 
+     reception services */
+  components new AMSenderC(AM_AVG_MSG) as SendTheft, 
+    new AMReceiverC(AM_AVG_MSG) as ReceiveTheft;
+
+  AntiTheftC.TheftSend -> SendTheft;
+  AntiTheftC.TheftReceive -> ReceiveTheft;
 }

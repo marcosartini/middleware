@@ -8,8 +8,8 @@ module AppRootC
     interface SplitControl as RadioControl;
     interface LowPowerListening;
 
-    interface DisseminationUpdate<collect_msg_t> as SettingsUpdate;
-    interface Receive as SettingsReceive;
+    interface DisseminationUpdate<collect_msg_t> as CollectsUpdate;
+ //   interface Receive as SettingsReceive; //NON SERVE, TIMER
 
     interface StdControl as CollectionControl;
     interface StdControl as DisseminationControl;

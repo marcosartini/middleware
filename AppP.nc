@@ -8,7 +8,14 @@ module AppP
 	uses interface Timer<TMilli>;
 	uses interface Read<float> as Temperature;
 	uses interface Read<float> as Humidity;
-	uses interface AMSend;
+	uses interface AMSend as TheftSend;
+	uses interface Receive as TheftReceive;
+	uses interface LowPowerListening;
+	interface StdControl as CollectionControl;
+    interface StdControl as DisseminationControl;
+	interface DisseminationValue<collect_t> as SettingsValue;
+    interface Send as AlertRoot;
+	
 	uses interface AMPacket;
 	uses interface Receive as ReceiveCollect;
 	uses interface Receive as ReceiveAvg;
