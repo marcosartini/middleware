@@ -1,6 +1,6 @@
-#ifndef __AVGMESSAGE_H
-#define __AVGMESSAGE_H
-#endif
+#ifndef __ENVIRONMENT_H
+#define __ENVIRONMENT_H
+
 
 enum{
 	AM_AVG_MSG = 231,
@@ -27,3 +27,5 @@ typedef nx_struct{
 	nx_uint8_t humidity;
 	nx_uint8_t node_id;
 } avg_t;
+
+#endif

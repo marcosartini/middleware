@@ -1,4 +1,4 @@
-generic confirguration HDemoSensor(){
+generic configuration HDemoSensor(){
 	provides interface Read<double>;
 }
 implementation

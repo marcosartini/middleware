@@ -6,7 +6,8 @@ implementation {
 	
 	components EnvC, ActiveMessageC, MainC, new TimerMilliC() as MyTimer;
 	
-	components CC2420ActiveMessageC as Radio;
+//	components CC2420ActiveMessageC as Radio;
+	components ActiveMessageC as Radio;
 	
 	EnvC.Boot -> MainC.Boot;
 	EnvC.Timer -> MyTimer;

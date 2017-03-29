@@ -81,18 +81,20 @@ event void Humidity.readDone(error_t err, float val){
 }
 
 event void CollectValue.changed(){
+	avg_t *newAvg;
 	const collect_t *newCollect = call CollectValue.get();
 	
-	if (*newCollect.msg_id>collect.msg_id){ //forse
+	if (newCollect->msg_id>collect.msg_id){ //forse
 	collect = *newCollect;
 	
 	post computeAverages();
-	avg_t *newAvg = call AvgRoot.getPayload(&avgMsg, sizeof(avg_t));
+
+	newAvg = call AvgRoot.getPayload(&avgMsg, sizeof(avg_t));
 	if (newAvg != NULL){
 		newAvg -> temperature = avgT;
 		newAvg -> humidity = avgH;
 		newAvg -> node_id = TOS_NODE_ID;
-		check(call AvgRoot.send(&avgMsg, sizeof *newAvg));
+		call AvgRoot.send(&avgMsg, sizeof *newAvg);
 	}
 	}
 }

@@ -1,4 +1,4 @@
-generic confirguration TDemoSensor(){
+generic configuration TDemoSensor(){
 	provides interface Read<double>;
 }
 implementation
