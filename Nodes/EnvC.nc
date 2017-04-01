@@ -7,8 +7,8 @@ module EnvC{
 		
 		interface Boot;
 		interface Timer<TMilli>;
-		interface Read<float> as Temperature;
-		interface Read<float> as Humidity;
+		interface Read<uint16_t> as Temperature;
+		interface Read<uint16_t> as Humidity;
 		interface DisseminationValue<collect_t> as CollectValue;
 		
 		interface Send as AvgRoot;
@@ -64,7 +64,7 @@ event void Timer.fired(){
 		post readHumidity();
 }
 
-event void Temperature.readDone(error_t err, float val){
+event void Temperature.readDone(error_t err, uint16_t val){
 	if(err == SUCCESS){
 		sumT = sumT + val;
 		nT++;
@@ -72,7 +72,7 @@ event void Temperature.readDone(error_t err, float val){
 	}
 }
 
-event void Humidity.readDone(error_t err, float val){
+event void Humidity.readDone(error_t err, uint16_t val){
 	if(err == SUCCESS){
 		sumH = sumH + val;
 		nH++;
@@ -113,7 +113,7 @@ event void AvgRoot.sendDone(message_t *msg, error_t ok){
       {
 	call DisseminationControl.start();
 	call CollectionControl.start();
-	call LowPowerListening.setLocalWakeupInterval(512);
+//	call LowPowerListening.setLocalWakeupInterval(512);
 	dbg("default","%s | Node %d RadioControl.startDone\n", sim_time_string(), TOS_NODE_ID);
       }
   }

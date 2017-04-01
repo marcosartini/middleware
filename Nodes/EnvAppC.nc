@@ -12,12 +12,17 @@ implementation {
 	EnvC.Boot -> MainC.Boot;
 	EnvC.Timer -> MyTimer;
 	EnvC.RadioControl -> ActiveMessageC;
-	EnvC.LowPowerListening -> Radio;
+//	EnvC.LowPowerListening -> Radio;
 	
-	components HDemoSensor, TDemoSensor;
-	EnvC.Temperature -> TDemoSensor;
-	EnvC.Humidity -> HDemoSensor;
-	
+//	components HDemoSensor, TDemoSensor;
+//	EnvC.Temperature -> TDemoSensor;
+//	EnvC.Humidity -> HDemoSensor;
+
+	components new DemoSensorC() as TSensor;
+	components new DemoSensorC() as HSensor;
+	EnvC.Temperature -> TSensor;
+	EnvC.Humidity -> HSensor;
+
 	components DisseminationC;
 	EnvC.DisseminationControl -> DisseminationC;
 	
