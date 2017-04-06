@@ -19,7 +19,7 @@ typedef nx_struct message_t{
 
 typedef nx_struct{
 	nx_uint8_t root_id;
-	nx_uint32_t msg_id;
+	nx_uint32_t msg_id; //+ send id
 } collect_t;
 
 typedef nx_struct{
