@@ -3,18 +3,12 @@
 #define dbg(mode, format, ...) ((void)0)
 #define dbg_clear(mode, format, ...) ((void)0)
 #define dbg_active(mode) 0
-# 149 "/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h" 3
+# 147 "/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stddef.h" 3
 typedef long int ptrdiff_t;
-#line 216
+#line 212
 typedef long unsigned int size_t;
-#line 328
+#line 324
 typedef int wchar_t;
-#line 429
-#line 426
-typedef struct __nesc_unnamed4242 {
-  long long __max_align_ll __attribute((__aligned__(__alignof__(long long )))) ;
-  long double __max_align_ld __attribute((__aligned__(__alignof__(long double )))) ;
-} max_align_t;
 # 8 "/usr/lib/ncc/deputy_nodeputy.h"
 struct __nesc_attr_nonnull {
 #line 8
@@ -150,7 +144,7 @@ typedef unsigned long int uintmax_t;
 typedef int __gwchar_t;
 #line 275
 #line 271
-typedef struct __nesc_unnamed4243 {
+typedef struct __nesc_unnamed4242 {
 
   long int quot;
   long int rem;
@@ -245,7 +239,7 @@ extern size_t strlen(const char *__s)
 __attribute((__leaf__)) __attribute((__nothrow__)) __attribute((__pure__)) __attribute((__nonnull__(1))) ;
 # 55 "/usr/include/x86_64-linux-gnu/bits/waitflags.h" 3
 #line 50
-typedef enum __nesc_unnamed4244 {
+typedef enum __nesc_unnamed4243 {
 
   P_ALL, 
   P_PID, 
@@ -287,7 +281,7 @@ typedef unsigned long int __nlink_t;
 typedef long int __off_t;
 typedef long int __off64_t;
 typedef int __pid_t;
-typedef struct __nesc_unnamed4245 {
+typedef struct __nesc_unnamed4244 {
 #line 134
   int __val[2];
 } 
@@ -352,7 +346,7 @@ typedef unsigned int __socklen_t;
 union wait {
 
   int w_status;
-  struct __nesc_unnamed4246 {
+  struct __nesc_unnamed4245 {
 
 
     unsigned int __w_termsig : 7;
@@ -367,7 +361,7 @@ union wait {
 
 
   __wait_terminated;
-  struct __nesc_unnamed4247 {
+  struct __nesc_unnamed4246 {
 
 
     unsigned int __w_stopval : 8;
@@ -383,14 +377,14 @@ union wait {
 };
 # 71 "/usr/include/stdlib.h" 3
 #line 67
-typedef union __nesc_unnamed4248 {
+typedef union __nesc_unnamed4247 {
 
   union wait *__uptr;
   int *__iptr;
 } __WAIT_STATUS __attribute((__transparent_union__)) ;
 #line 101
 #line 97
-typedef struct __nesc_unnamed4249 {
+typedef struct __nesc_unnamed4248 {
 
   int quot;
   int rem;
@@ -403,7 +397,7 @@ typedef struct __nesc_unnamed4249 {
 
 
 #line 105
-typedef struct __nesc_unnamed4250 {
+typedef struct __nesc_unnamed4249 {
 
   long int quot;
   long int rem;
@@ -420,7 +414,7 @@ __extension__
 
 
 #line 117
-typedef struct __nesc_unnamed4251 {
+typedef struct __nesc_unnamed4250 {
 
   long long int quot;
   long long int rem;
@@ -548,7 +542,7 @@ typedef int __sig_atomic_t;
 
 
 #line 27
-typedef struct __nesc_unnamed4252 {
+typedef struct __nesc_unnamed4251 {
 
   unsigned long int __val[1024 / (8 * sizeof(unsigned long int ))];
 } __sigset_t;
@@ -576,7 +570,7 @@ typedef __suseconds_t suseconds_t;
 typedef long int __fd_mask;
 #line 75
 #line 64
-typedef struct __nesc_unnamed4253 {
+typedef struct __nesc_unnamed4252 {
 
 
 
@@ -648,7 +642,7 @@ typedef struct __pthread_internal_list {
 } __pthread_list_t;
 #line 128
 #line 90
-typedef union __nesc_unnamed4254 {
+typedef union __nesc_unnamed4253 {
 
   struct __pthread_mutex_s {
 
@@ -677,16 +671,16 @@ typedef union __nesc_unnamed4254 {
 
 
 #line 130
-typedef union __nesc_unnamed4255 {
+typedef union __nesc_unnamed4254 {
 
   char __size[4];
   int __align;
 } pthread_mutexattr_t;
 #line 154
 #line 139
-typedef union __nesc_unnamed4256 {
+typedef union __nesc_unnamed4255 {
 
-  struct __nesc_unnamed4257 {
+  struct __nesc_unnamed4256 {
 
     int __lock;
     unsigned int __futex;
@@ -706,7 +700,7 @@ typedef union __nesc_unnamed4256 {
 
 
 #line 156
-typedef union __nesc_unnamed4258 {
+typedef union __nesc_unnamed4257 {
 
   char __size[4];
   int __align;
@@ -721,10 +715,10 @@ typedef unsigned int pthread_key_t;
 typedef int pthread_once_t;
 #line 222
 #line 174
-typedef union __nesc_unnamed4259 {
+typedef union __nesc_unnamed4258 {
 
 
-  struct __nesc_unnamed4260 {
+  struct __nesc_unnamed4259 {
 
     int __lock;
     unsigned int __nr_readers;
@@ -758,7 +752,7 @@ typedef union __nesc_unnamed4259 {
 
 
 #line 224
-typedef union __nesc_unnamed4261 {
+typedef union __nesc_unnamed4260 {
 
   char __size[8];
   long int __align;
@@ -778,7 +772,7 @@ typedef volatile int pthread_spinlock_t;
 
 
 #line 239
-typedef union __nesc_unnamed4262 {
+typedef union __nesc_unnamed4261 {
 
   char __size[32];
   long int __align;
@@ -789,7 +783,7 @@ typedef union __nesc_unnamed4262 {
 
 
 #line 245
-typedef union __nesc_unnamed4263 {
+typedef union __nesc_unnamed4262 {
 
   char __size[4];
   int __align;
@@ -819,7 +813,7 @@ extern void *malloc(size_t __size) __attribute((__leaf__)) __attribute((__nothro
 #line 483
 extern void free(void *__ptr) __attribute((__leaf__)) __attribute((__nothrow__)) ;
 #line 741
-typedef int (*__compar_fn_t)(const void *arg_0x7f7cb817f400, const void *arg_0x7f7cb817f700);
+typedef int (*__compar_fn_t)(const void *arg_0x7faddb98b840, const void *arg_0x7faddb98bb40);
 #line 779
 __extension__ 
 #line 796
@@ -837,7 +831,7 @@ extern double sqrt(double __x) __attribute((__leaf__)) __attribute((__nothrow__)
 #line 184
 extern double floor(double __x) __attribute((__leaf__)) __attribute((__nothrow__)) __attribute((const)) ;
 #line 260
-extern double erfc(double arg_0x7f7cb80f7190) __attribute((__leaf__)) __attribute((__nothrow__)) ;
+extern double erfc(double arg_0x7faddb9025e0) __attribute((__leaf__)) __attribute((__nothrow__)) ;
 #line 336
 __extension__ 
 
@@ -863,7 +857,7 @@ __extension__
 
 __extension__ 
 # 209 "/usr/include/math.h" 3
-enum __nesc_unnamed4264 {
+enum __nesc_unnamed4263 {
 
   FP_NAN = 
 
@@ -883,7 +877,7 @@ enum __nesc_unnamed4264 {
 };
 #line 354
 #line 347
-typedef enum __nesc_unnamed4265 {
+typedef enum __nesc_unnamed4264 {
 
   _IEEE_ = -1, 
   _SVID_, 
@@ -902,7 +896,7 @@ struct exception {
   double retval;
 };
 # 46 "/usr/include/ctype.h" 3
-enum __nesc_unnamed4266 {
+enum __nesc_unnamed4265 {
 
   _ISupper = 0 < 8 ? (1 << 0) << 8 : (1 << 0) >> 8, 
   _ISlower = 1 < 8 ? (1 << 1) << 8 : (1 << 1) >> 8, 
@@ -927,10 +921,10 @@ typedef struct _IO_FILE FILE;
 typedef struct _IO_FILE __FILE;
 # 94 "/usr/include/wchar.h" 3
 #line 82
-typedef struct __nesc_unnamed4267 {
+typedef struct __nesc_unnamed4266 {
 
   int __count;
-  union __nesc_unnamed4268 {
+  union __nesc_unnamed4267 {
 
 
     unsigned int __wch;
@@ -942,7 +936,7 @@ typedef struct __nesc_unnamed4267 {
 } __mbstate_t;
 # 25 "/usr/include/_G_config.h" 3
 #line 21
-typedef struct __nesc_unnamed4269 {
+typedef struct __nesc_unnamed4268 {
 
   __off_t __pos;
   __mbstate_t __state;
@@ -952,12 +946,12 @@ typedef struct __nesc_unnamed4269 {
 
 
 #line 26
-typedef struct __nesc_unnamed4270 {
+typedef struct __nesc_unnamed4269 {
 
   __off64_t __pos;
   __mbstate_t __state;
 } _G_fpos64_t;
-# 40 "/usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h" 3
+# 40 "/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdarg.h" 3
 typedef __builtin_va_list __gnuc_va_list;
 # 144 "/usr/include/libio.h" 3
 struct _IO_jump_t;
@@ -1138,7 +1132,7 @@ typedef uint8_t bool;
 
 
 
-enum __nesc_unnamed4271 {
+enum __nesc_unnamed4270 {
 #line 76
   FALSE = 0, TRUE = 1
 };
@@ -1232,8 +1226,8 @@ typedef struct hashtable hashtable_t;
 #line 78
 struct hashtable *
 create_hashtable(unsigned int minsize, 
-unsigned int (*hashfunction)(void *arg_0x7f7cb7e9e3a0), 
-int (*key_eq_fn)(void *arg_0x7f7cb7e9eb70, void *arg_0x7f7cb7e9ee30));
+unsigned int (*hashfunction)(void *arg_0x7faddb6a6d50), 
+int (*key_eq_fn)(void *arg_0x7faddb6a5550, void *arg_0x7faddb6a5810));
 #line 103
 #line 102
 int 
@@ -1242,7 +1236,7 @@ hashtable_insert(struct hashtable *h, void *k, void *v);
 void *
 hashtable_search(struct hashtable *h, void *k);
 # 47 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/sim_log.c"
-enum __nesc_unnamed4272 {
+enum __nesc_unnamed4271 {
   DEFAULT_CHANNEL_SIZE = 8
 };
 
@@ -1268,7 +1262,7 @@ typedef struct sim_log_channel {
   FILE **outputs;
 } sim_log_channel_t;
 
-enum __nesc_unnamed4273 {
+enum __nesc_unnamed4272 {
   SIM_LOG_OUTPUT_COUNT = 313U
 };
 
@@ -1485,7 +1479,7 @@ struct itimerval {
 
 typedef int __itimer_which_t;
 # 51 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/sim_noise.h"
-enum __nesc_unnamed4274 {
+enum __nesc_unnamed4273 {
   NOISE_MIN = -115, 
   NOISE_MAX = -5, 
   NOISE_MIN_QUANTIZE = -115, 
@@ -1846,7 +1840,7 @@ struct tm;
 
 struct tm;
 # 46 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/randomlib.h"
-static inline void RandomInitialise(int arg_0x7f7cb7c8a660, int arg_0x7f7cb7c8a8e0);
+static inline void RandomInitialise(int arg_0x7faddb4923f0, int arg_0x7faddb492670);
 static double RandomUniform(void );
 # 51 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/sim_noise.c"
 int numCase1 = 0;
@@ -1963,7 +1957,7 @@ typedef uint8_t am_id_t;
 typedef uint8_t am_group_t;
 typedef uint16_t am_addr_t;
 
-enum __nesc_unnamed4275 {
+enum __nesc_unnamed4274 {
   AM_BROADCAST_ADDR = 0xffff
 };
 
@@ -1975,7 +1969,7 @@ enum __nesc_unnamed4275 {
 
 
 
-enum __nesc_unnamed4276 {
+enum __nesc_unnamed4275 {
   TOS_AM_GROUP = 0x22, 
   TOS_AM_ADDRESS = 1
 };
@@ -2011,14 +2005,14 @@ typedef uint8_t uart_id_t;
 
 
 
-enum __nesc_unnamed4277 {
+enum __nesc_unnamed4276 {
   HDLC_FLAG_BYTE = 0x7e, 
   HDLC_CTLESC_BYTE = 0x7d
 };
 
 
 
-enum __nesc_unnamed4278 {
+enum __nesc_unnamed4277 {
   TOS_SERIAL_ACTIVE_MESSAGE_ID = 0, 
   TOS_SERIAL_CC1000_ID = 1, 
   TOS_SERIAL_802_15_4_ID = 2, 
@@ -2026,7 +2020,7 @@ enum __nesc_unnamed4278 {
 };
 
 
-enum __nesc_unnamed4279 {
+enum __nesc_unnamed4278 {
   SERIAL_PROTO_ACK = 67, 
   SERIAL_PROTO_PACKET_ACK = 68, 
   SERIAL_PROTO_PACKET_NOACK = 69, 
@@ -2179,7 +2173,7 @@ sim_packet_t *sim_packet_allocate()   ;
 
 void sim_packet_free(sim_packet_t *p)   ;
 # 51 "/home/marco/tinyos-release-tinyos-2_1_2/tos/types/TinyError.h"
-enum __nesc_unnamed4280 {
+enum __nesc_unnamed4279 {
   SUCCESS = 0, 
   FAIL = 1, 
   ESIZE = 2, 
@@ -2199,7 +2193,7 @@ typedef uint8_t error_t  ;
 
 static inline error_t ecombine(error_t r1, error_t r2)  ;
 # 5 "environment.h"
-enum __nesc_unnamed4281 {
+enum __nesc_unnamed4280 {
   AM_AVG_MSG = 231, 
   AM_COLLECT_MSG = 241, 
   COL_AVG = 242, 
@@ -2208,7 +2202,7 @@ enum __nesc_unnamed4281 {
 };
 #line 23
 #line 20
-typedef nx_struct __nesc_unnamed4282 {
+typedef nx_struct __nesc_unnamed4281 {
   nx_uint8_t root_id;
   nx_uint32_t msg_id;
 } __attribute__((packed)) collect_t;
@@ -2218,38 +2212,38 @@ typedef nx_struct __nesc_unnamed4282 {
 
 
 #line 25
-typedef nx_struct __nesc_unnamed4283 {
+typedef nx_struct __nesc_unnamed4282 {
   nx_uint8_t temperature;
   nx_uint8_t humidity;
   nx_uint8_t node_id;
 } __attribute__((packed)) avg_t;
 # 41 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/Timer.h"
-typedef struct __nesc_unnamed4284 {
+typedef struct __nesc_unnamed4283 {
 #line 41
   int notUsed;
 } 
 #line 41
 TSecond;
-typedef struct __nesc_unnamed4285 {
+typedef struct __nesc_unnamed4284 {
 #line 42
   int notUsed;
 } 
 #line 42
 TMilli;
-typedef struct __nesc_unnamed4286 {
+typedef struct __nesc_unnamed4285 {
 #line 43
   int notUsed;
 } 
 #line 43
 T32khz;
-typedef struct __nesc_unnamed4287 {
+typedef struct __nesc_unnamed4286 {
 #line 44
   int notUsed;
 } 
 #line 44
 TMicro;
 # 25 "/home/marco/tinyos-release-tinyos-2_1_2/tos/chips/atm128/sim/atm128_sim.h"
-enum __nesc_unnamed4288 {
+enum __nesc_unnamed4287 {
 
   ATM128_PINF = 0x00, 
 
@@ -2549,7 +2543,7 @@ enum __nesc_unnamed4288 {
   ATM128_UCSR1C = 0x9D
 };
 #line 673
-enum __nesc_unnamed4289 {
+enum __nesc_unnamed4288 {
 
   TWINT = 7, 
   TWEA = 6, 
@@ -3214,7 +3208,7 @@ typedef uint8_t mcu_power_t  ;
 
 
 
-enum __nesc_unnamed4290 {
+enum __nesc_unnamed4289 {
   ATM128_POWER_IDLE = 0, 
   ATM128_POWER_ADC_NR = 1, 
   ATM128_POWER_EXT_STANDBY = 2, 
@@ -3223,7 +3217,7 @@ enum __nesc_unnamed4290 {
   ATM128_POWER_DOWN = 5
 };
 # 43 "/home/marco/tinyos-release-tinyos-2_1_2/tos/chips/atm128/adc/Atm128Adc.h"
-enum __nesc_unnamed4291 {
+enum __nesc_unnamed4290 {
   ATM128_ADC_VREF_OFF = 0, 
   ATM128_ADC_VREF_AVCC = 1, 
   ATM128_ADC_VREF_RSVD, 
@@ -3231,14 +3225,14 @@ enum __nesc_unnamed4291 {
 };
 
 
-enum __nesc_unnamed4292 {
+enum __nesc_unnamed4291 {
   ATM128_ADC_RIGHT_ADJUST = 0, 
   ATM128_ADC_LEFT_ADJUST = 1
 };
 
 
 
-enum __nesc_unnamed4293 {
+enum __nesc_unnamed4292 {
   ATM128_ADC_SNGL_ADC0 = 0, 
   ATM128_ADC_SNGL_ADC1, 
   ATM128_ADC_SNGL_ADC2, 
@@ -3280,7 +3274,7 @@ enum __nesc_unnamed4293 {
 
 
 #line 94
-typedef struct __nesc_unnamed4294 {
+typedef struct __nesc_unnamed4293 {
 
   uint8_t mux : 5;
   uint8_t adlar : 1;
@@ -3290,7 +3284,7 @@ typedef struct __nesc_unnamed4294 {
 
 
 
-enum __nesc_unnamed4295 {
+enum __nesc_unnamed4294 {
   ATM128_ADC_PRESCALE_2 = 0, 
   ATM128_ADC_PRESCALE_2b, 
   ATM128_ADC_PRESCALE_4, 
@@ -3306,31 +3300,31 @@ enum __nesc_unnamed4295 {
 };
 
 
-enum __nesc_unnamed4296 {
+enum __nesc_unnamed4295 {
   ATM128_ADC_ENABLE_OFF = 0, 
   ATM128_ADC_ENABLE_ON
 };
 
 
-enum __nesc_unnamed4297 {
+enum __nesc_unnamed4296 {
   ATM128_ADC_START_CONVERSION_OFF = 0, 
   ATM128_ADC_START_CONVERSION_ON
 };
 
 
-enum __nesc_unnamed4298 {
+enum __nesc_unnamed4297 {
   ATM128_ADC_FREE_RUNNING_OFF = 0, 
   ATM128_ADC_FREE_RUNNING_ON
 };
 
 
-enum __nesc_unnamed4299 {
+enum __nesc_unnamed4298 {
   ATM128_ADC_INT_FLAG_OFF = 0, 
   ATM128_ADC_INT_FLAG_ON
 };
 
 
-enum __nesc_unnamed4300 {
+enum __nesc_unnamed4299 {
   ATM128_ADC_INT_ENABLE_OFF = 0, 
   ATM128_ADC_INT_ENABLE_ON
 };
@@ -3345,7 +3339,7 @@ enum __nesc_unnamed4300 {
 
 
 #line 150
-typedef struct __nesc_unnamed4301 {
+typedef struct __nesc_unnamed4300 {
 
   uint8_t adps : 3;
   uint8_t adie : 1;
@@ -3358,7 +3352,7 @@ typedef struct __nesc_unnamed4301 {
 typedef uint8_t Atm128_ADCH_t;
 typedef uint8_t Atm128_ADCL_t;
 # 54 "/home/marco/tinyos-release-tinyos-2_1_2/tos/platforms/micaz/sim/platform_hardware.h"
-enum __nesc_unnamed4302 {
+enum __nesc_unnamed4301 {
   CHANNEL_RSSI = ATM128_ADC_SNGL_ADC0, 
   CHANNEL_THERMISTOR = ATM128_ADC_SNGL_ADC1, 
   CHANNEL_BATTERY = ATM128_ADC_SNGL_ADC7, 
@@ -3370,7 +3364,7 @@ enum __nesc_unnamed4302 {
 # 41 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/SimMainP.nc"
 static void __nesc_nido_initialise(int node);
 # 52 "/home/marco/tinyos-release-tinyos-2_1_2/tos/chips/atm128/timer/Atm128Timer.h"
-enum __nesc_unnamed4303 {
+enum __nesc_unnamed4302 {
   ATM128_CLK8_OFF = 0x0, 
   ATM128_CLK8_NORMAL = 0x1, 
   ATM128_CLK8_DIVIDE_8 = 0x2, 
@@ -3381,7 +3375,7 @@ enum __nesc_unnamed4303 {
   ATM128_CLK8_DIVIDE_1024 = 0x7
 };
 
-enum __nesc_unnamed4304 {
+enum __nesc_unnamed4303 {
   ATM128_CLK16_OFF = 0x0, 
   ATM128_CLK16_NORMAL = 0x1, 
   ATM128_CLK16_DIVIDE_8 = 0x2, 
@@ -3393,14 +3387,14 @@ enum __nesc_unnamed4304 {
 };
 
 
-enum __nesc_unnamed4305 {
+enum __nesc_unnamed4304 {
   AVR_CLOCK_OFF = 0, 
   AVR_CLOCK_ON = 1, 
   AVR_CLOCK_DIVIDE_8 = 2
 };
 
 
-enum __nesc_unnamed4306 {
+enum __nesc_unnamed4305 {
   ATM128_WAVE8_NORMAL = 0, 
   ATM128_WAVE8_PWM, 
   ATM128_WAVE8_CTC, 
@@ -3408,7 +3402,7 @@ enum __nesc_unnamed4306 {
 };
 
 
-enum __nesc_unnamed4307 {
+enum __nesc_unnamed4306 {
   ATM128_COMPARE_OFF = 0, 
   ATM128_COMPARE_TOGGLE, 
   ATM128_COMPARE_CLEAR, 
@@ -3416,10 +3410,10 @@ enum __nesc_unnamed4307 {
 };
 #line 108
 #line 98
-typedef union __nesc_unnamed4308 {
+typedef union __nesc_unnamed4307 {
 
   uint8_t flat;
-  struct __nesc_unnamed4309 {
+  struct __nesc_unnamed4308 {
     uint8_t cs : 3;
     uint8_t wgm1 : 1;
     uint8_t com : 2;
@@ -3437,10 +3431,10 @@ typedef uint8_t Atm128_TCNT2_t;
 typedef uint8_t Atm128_OCR2_t;
 #line 130
 #line 120
-typedef union __nesc_unnamed4310 {
+typedef union __nesc_unnamed4309 {
 
   uint8_t flat;
-  struct __nesc_unnamed4311 {
+  struct __nesc_unnamed4310 {
     uint8_t tcr0ub : 1;
     uint8_t ocr0ub : 1;
     uint8_t tcn0ub : 1;
@@ -3450,10 +3444,10 @@ typedef union __nesc_unnamed4310 {
 } Atm128Assr_t;
 #line 146
 #line 133
-typedef union __nesc_unnamed4312 {
+typedef union __nesc_unnamed4311 {
 
   uint8_t flat;
-  struct __nesc_unnamed4313 {
+  struct __nesc_unnamed4312 {
     uint8_t toie0 : 1;
     uint8_t ocie0 : 1;
     uint8_t toie1 : 1;
@@ -3466,10 +3460,10 @@ typedef union __nesc_unnamed4312 {
 } Atm128_TIMSK_t;
 #line 163
 #line 150
-typedef union __nesc_unnamed4314 {
+typedef union __nesc_unnamed4313 {
 
   uint8_t flat;
-  struct __nesc_unnamed4315 {
+  struct __nesc_unnamed4314 {
     uint8_t tov0 : 1;
     uint8_t ocf0 : 1;
     uint8_t tov1 : 1;
@@ -3482,10 +3476,10 @@ typedef union __nesc_unnamed4314 {
 } Atm128_TIFR_t;
 #line 178
 #line 167
-typedef union __nesc_unnamed4316 {
+typedef union __nesc_unnamed4315 {
 
   uint8_t flat;
-  struct __nesc_unnamed4317 {
+  struct __nesc_unnamed4316 {
     uint8_t psr321 : 1;
     uint8_t psr0 : 1;
     uint8_t pud : 1;
@@ -3500,7 +3494,7 @@ typedef union __nesc_unnamed4316 {
 
 
 
-enum __nesc_unnamed4318 {
+enum __nesc_unnamed4317 {
   ATM128_TIMER_COMPARE_NORMAL = 0, 
   ATM128_TIMER_COMPARE_TOGGLE, 
   ATM128_TIMER_COMPARE_CLEAR, 
@@ -3508,10 +3502,10 @@ enum __nesc_unnamed4318 {
 };
 #line 202
 #line 193
-typedef union __nesc_unnamed4319 {
+typedef union __nesc_unnamed4318 {
 
   uint8_t flat;
-  struct __nesc_unnamed4320 {
+  struct __nesc_unnamed4319 {
     uint8_t wgm10 : 2;
     uint8_t comC : 2;
     uint8_t comB : 2;
@@ -3526,7 +3520,7 @@ typedef Atm128TimerCtrlCompare_t Atm128_TCCR1A_t;
 typedef Atm128TimerCtrlCompare_t Atm128_TCCR3A_t;
 
 
-enum __nesc_unnamed4321 {
+enum __nesc_unnamed4320 {
   ATM128_WAVE16_NORMAL = 0, 
   ATM128_WAVE16_PWM_8BIT, 
   ATM128_WAVE16_PWM_9BIT, 
@@ -3546,10 +3540,10 @@ enum __nesc_unnamed4321 {
 };
 #line 241
 #line 231
-typedef union __nesc_unnamed4322 {
+typedef union __nesc_unnamed4321 {
 
   uint8_t flat;
-  struct __nesc_unnamed4323 {
+  struct __nesc_unnamed4322 {
     uint8_t cs : 3;
     uint8_t wgm32 : 2;
     uint8_t rsvd : 1;
@@ -3565,10 +3559,10 @@ typedef Atm128TimerCtrlCapture_t Atm128_TCCR1B_t;
 typedef Atm128TimerCtrlCapture_t Atm128_TCCR3B_t;
 #line 259
 #line 250
-typedef union __nesc_unnamed4324 {
+typedef union __nesc_unnamed4323 {
 
   uint8_t flat;
-  struct __nesc_unnamed4325 {
+  struct __nesc_unnamed4324 {
     uint8_t rsvd : 5;
     uint8_t focC : 1;
     uint8_t focB : 1;
@@ -3612,10 +3606,10 @@ typedef uint8_t Atm128_ICR3H_t;
 typedef uint8_t Atm128_ICR3L_t;
 #line 309
 #line 297
-typedef union __nesc_unnamed4326 {
+typedef union __nesc_unnamed4325 {
 
   uint8_t flat;
-  struct __nesc_unnamed4327 {
+  struct __nesc_unnamed4326 {
     uint8_t ocie1c : 1;
     uint8_t ocie3c : 1;
     uint8_t toie3 : 1;
@@ -3627,10 +3621,10 @@ typedef union __nesc_unnamed4326 {
 } Atm128_ETIMSK_t;
 #line 324
 #line 312
-typedef union __nesc_unnamed4328 {
+typedef union __nesc_unnamed4327 {
 
   uint8_t flat;
-  struct __nesc_unnamed4329 {
+  struct __nesc_unnamed4328 {
     uint8_t ocf1c : 1;
     uint8_t ocf3c : 1;
     uint8_t tov3 : 1;
@@ -3641,7 +3635,7 @@ typedef union __nesc_unnamed4328 {
   } bits;
 } Atm128_ETIFR_t;
 # 40 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationEngine.h"
-enum __nesc_unnamed4330 {
+enum __nesc_unnamed4329 {
   AM_DISSEMINATION_MESSAGE = 0x60, 
   AM_DISSEMINATION_PROBE_MESSAGE = 0x61, 
   DISSEMINATION_SEQNO_UNKNOWN = 0
@@ -3665,7 +3659,7 @@ typedef nx_struct dissemination_probe_message {
   nx_uint16_t key;
 } __attribute__((packed)) dissemination_probe_message_t;
 # 43 "/home/marco/tinyos-release-tinyos-2_1_2/tos/types/Leds.h"
-enum __nesc_unnamed4331 {
+enum __nesc_unnamed4330 {
   LEDS_LED0 = 1 << 0, 
   LEDS_LED1 = 1 << 1, 
   LEDS_LED2 = 1 << 2, 
@@ -3676,7 +3670,7 @@ enum __nesc_unnamed4331 {
   LEDS_LED7 = 1 << 7
 };
 # 42 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/Collection.h"
-enum __nesc_unnamed4332 {
+enum __nesc_unnamed4331 {
   AM_COLLECTION_DATA = 20, 
   AM_COLLECTION_CONTROL = 21, 
   AM_COLLECTION_DEBUG = 22
@@ -3685,7 +3679,7 @@ enum __nesc_unnamed4332 {
 typedef uint8_t collection_id_t;
 typedef nx_uint8_t nx_collection_id_t;
 # 51 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/Ctp.h"
-enum __nesc_unnamed4333 {
+enum __nesc_unnamed4332 {
 
   AM_CTP_ROUTING = 0x70, 
   AM_CTP_DATA = 0x71, 
@@ -3709,7 +3703,7 @@ typedef uint8_t ctp_options_t;
 
 
 #line 66
-typedef nx_struct __nesc_unnamed4334 {
+typedef nx_struct __nesc_unnamed4333 {
   nx_ctp_options_t options;
   nx_uint8_t thl;
   nx_uint16_t etx;
@@ -3725,14 +3719,14 @@ typedef nx_struct __nesc_unnamed4334 {
 
 
 #line 76
-typedef nx_struct __nesc_unnamed4335 {
+typedef nx_struct __nesc_unnamed4334 {
   nx_ctp_options_t options;
   nx_am_addr_t parent;
   nx_uint16_t etx;
   nx_uint8_t ( data)[0];
 } __attribute__((packed)) ctp_routing_header_t;
 # 60 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/CtpForwardingEngine.h"
-enum __nesc_unnamed4336 {
+enum __nesc_unnamed4335 {
 
   FORWARD_PACKET_TIME = 7
 };
@@ -3740,7 +3734,7 @@ enum __nesc_unnamed4336 {
 
 
 
-enum __nesc_unnamed4337 {
+enum __nesc_unnamed4336 {
   SENDDONE_OK_OFFSET = FORWARD_PACKET_TIME, 
   SENDDONE_OK_WINDOW = FORWARD_PACKET_TIME, 
   SENDDONE_NOACK_OFFSET = FORWARD_PACKET_TIME, 
@@ -3761,18 +3755,18 @@ enum __nesc_unnamed4337 {
 
 
 
-enum __nesc_unnamed4338 {
+enum __nesc_unnamed4337 {
   MAX_RETRIES = 30
 };
 #line 104
 #line 100
-typedef struct __nesc_unnamed4339 {
+typedef struct __nesc_unnamed4338 {
   message_t * msg;
   uint8_t client;
   uint8_t retries;
 } fe_queue_entry_t;
 # 7 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/CtpDebugMsg.h"
-enum __nesc_unnamed4340 {
+enum __nesc_unnamed4339 {
   NET_C_DEBUG_STARTED = 0xDE, 
 
   NET_C_FE_MSG_POOL_EMPTY = 0x10, 
@@ -3826,19 +3820,19 @@ enum __nesc_unnamed4340 {
 #line 58
 typedef nx_struct CollectionDebugMsg {
   nx_uint8_t type;
-  nx_union __nesc_unnamed4341 {
+  nx_union __nesc_unnamed4340 {
     nx_uint16_t arg;
-    nx_struct __nesc_unnamed4342 {
+    nx_struct __nesc_unnamed4341 {
       nx_uint16_t msg_uid;
       nx_am_addr_t origin;
       nx_am_addr_t other_node;
     } __attribute__((packed)) msg;
-    nx_struct __nesc_unnamed4343 {
+    nx_struct __nesc_unnamed4342 {
       nx_am_addr_t parent;
       nx_uint8_t hopcount;
       nx_uint16_t metric;
     } __attribute__((packed)) route_info;
-    nx_struct __nesc_unnamed4344 {
+    nx_struct __nesc_unnamed4343 {
       nx_uint16_t a;
       nx_uint16_t b;
       nx_uint16_t c;
@@ -3847,7 +3841,7 @@ typedef nx_struct CollectionDebugMsg {
   nx_uint16_t seqno;
 } __attribute__((packed)) CollectionDebugMsg;
 # 46 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/4bitle/./LinkEstimator.h"
-enum __nesc_unnamed4345 {
+enum __nesc_unnamed4344 {
 
 
   NUM_ENTRIES_FLAG = 15
@@ -3881,7 +3875,7 @@ typedef nx_struct linkest_footer {
 
 
 
-enum __nesc_unnamed4346 {
+enum __nesc_unnamed4345 {
   VALID_ENTRY = 0x1, 
 
 
@@ -3922,7 +3916,7 @@ typedef struct neighbor_table_entry {
   uint8_t data_total;
 } neighbor_table_entry_t;
 # 4 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/TreeRouting.h"
-enum __nesc_unnamed4347 {
+enum __nesc_unnamed4346 {
   AM_TREE_ROUTING_CONTROL = 0xCE, 
   BEACON_INTERVAL = 8192, 
   INVALID_ADDR = 0xFFFF, 
@@ -3938,7 +3932,7 @@ enum __nesc_unnamed4347 {
 
 
 #line 14
-typedef struct __nesc_unnamed4348 {
+typedef struct __nesc_unnamed4347 {
   am_addr_t parent;
   uint16_t etx;
   bool haveHeard;
@@ -3949,7 +3943,7 @@ typedef struct __nesc_unnamed4348 {
 
 
 #line 21
-typedef struct __nesc_unnamed4349 {
+typedef struct __nesc_unnamed4348 {
   am_addr_t neighbor;
   route_info_t info;
 } routing_table_entry;
@@ -3984,11 +3978,11 @@ typedef uint16_t /*EnvAppC.TSensor.ConstantSensorC*/ConstantSensorC$0$width_t;
 typedef /*EnvAppC.TSensor.ConstantSensorC*/ConstantSensorC$0$width_t /*EnvAppC.TSensor.ConstantSensorC*/ConstantSensorC$0$Read$val_t;
 typedef uint16_t /*EnvAppC.HSensor.ConstantSensorC*/ConstantSensorC$1$width_t;
 typedef /*EnvAppC.HSensor.ConstantSensorC*/ConstantSensorC$1$width_t /*EnvAppC.HSensor.ConstantSensorC*/ConstantSensorC$1$Read$val_t;
-enum AMQueueP$__nesc_unnamed4350 {
+enum AMQueueP$__nesc_unnamed4349 {
   AMQueueP$NUM_CLIENTS = 4U
 };
 typedef collect_t /*EnvAppC.DisseminatorC*/DisseminatorC$0$t;
-enum /*EnvAppC.DisseminatorC*/DisseminatorC$0$__nesc_unnamed4351 {
+enum /*EnvAppC.DisseminatorC*/DisseminatorC$0$__nesc_unnamed4350 {
   DisseminatorC$0$TIMER_ID = 0U
 };
 typedef /*EnvAppC.DisseminatorC*/DisseminatorC$0$t /*EnvAppC.DisseminatorC.DisseminatorP*/DisseminatorP$0$t;
@@ -3996,7 +3990,7 @@ typedef /*EnvAppC.DisseminatorC.DisseminatorP*/DisseminatorP$0$t /*EnvAppC.Disse
 typedef /*EnvAppC.DisseminatorC.DisseminatorP*/DisseminatorP$0$t /*EnvAppC.DisseminatorC.DisseminatorP*/DisseminatorP$0$DisseminationValue$t;
 typedef TMilli /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$Timer$precision_tag;
 typedef uint16_t RandomMlcgC$SeedInit$parameter;
-enum CtpP$__nesc_unnamed4352 {
+enum CtpP$__nesc_unnamed4351 {
   CtpP$CLIENT_COUNT = 1U, CtpP$FORWARD_COUNT = 12, CtpP$TREE_ROUTING_TABLE_SIZE = 10, CtpP$QUEUE_SIZE = CtpP$CLIENT_COUNT + CtpP$FORWARD_COUNT, CtpP$CACHE_SIZE = 4
 };
 typedef message_t */*CtpP.Forwarder*/CtpForwardingEngineP$0$SentCache$t;
@@ -4046,7 +4040,7 @@ static void EnvC$Timer$fired(void );
 # 80 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/AMSend.nc"
 static error_t TossimActiveMessageC$AMSend$send(
 # 47 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x7f7cb7abcc80, 
+am_id_t arg_0x7faddb2c5c80, 
 # 80 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/AMSend.nc"
 am_addr_t addr, 
 #line 71
@@ -4067,7 +4061,7 @@ void *
 
 TossimActiveMessageC$AMSend$getPayload(
 # 47 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x7f7cb7abcc80, 
+am_id_t arg_0x7faddb2c5c80, 
 # 132 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -4076,7 +4070,7 @@ uint8_t len);
 #line 123
 static uint8_t TossimActiveMessageC$AMSend$maxPayloadLength(
 # 47 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x7f7cb7abcc80);
+am_id_t arg_0x7faddb2c5c80);
 # 78 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Receive.nc"
 static 
 #line 74
@@ -4086,7 +4080,7 @@ message_t *
 
 TossimActiveMessageC$Snoop$default$receive(
 # 49 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x7f7cb7aa1a60, 
+am_id_t arg_0x7faddb2aaa60, 
 # 71 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -4133,7 +4127,7 @@ message_t *
 
 TossimActiveMessageC$Receive$default$receive(
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x7f7cb7aa2e50, 
+am_id_t arg_0x7faddb2abe50, 
 # 71 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -4278,11 +4272,11 @@ static error_t MeasureClockC$Init$init(void );
 # 67 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/TaskBasic.nc"
 static error_t SimSchedulerBasicP$TaskBasic$postTask(
 # 49 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0x7f7cb7b74020);
+uint8_t arg_0x7faddb37d020);
 # 75 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/TaskBasic.nc"
 static void SimSchedulerBasicP$TaskBasic$default$runTask(
 # 49 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0x7f7cb7b74020);
+uint8_t arg_0x7faddb37d020);
 # 57 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Scheduler.nc"
 static void SimSchedulerBasicP$Scheduler$init(void );
 
@@ -4375,27 +4369,27 @@ static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$fire
 #line 136
 static uint32_t /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$getNow(
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x7f7cb73f5950);
+uint8_t arg_0x7faddabfd950);
 # 83 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/Timer.nc"
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x7f7cb73f5950);
+uint8_t arg_0x7faddabfd950);
 # 151 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/Timer.nc"
 static uint32_t /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$getdt(
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x7f7cb73f5950);
+uint8_t arg_0x7faddabfd950);
 # 144 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/Timer.nc"
 static uint32_t /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$gett0(
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x7f7cb73f5950);
+uint8_t arg_0x7faddabfd950);
 # 92 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/Timer.nc"
 static bool /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$isRunning(
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x7f7cb73f5950);
+uint8_t arg_0x7faddabfd950);
 # 64 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/Timer.nc"
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$startPeriodic(
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x7f7cb73f5950, 
+uint8_t arg_0x7faddabfd950, 
 # 64 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/Timer.nc"
 uint32_t dt);
 
@@ -4408,7 +4402,7 @@ uint32_t dt);
 
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$startOneShot(
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x7f7cb73f5950, 
+uint8_t arg_0x7faddabfd950, 
 # 73 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/Timer.nc"
 uint32_t dt);
 
@@ -4417,7 +4411,7 @@ uint32_t dt);
 
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$stop(
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x7f7cb73f5950);
+uint8_t arg_0x7faddabfd950);
 # 82 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/Counter.nc"
 static void /*HilTimerMilliC.CounterToLocalTimeC*/CounterToLocalTimeC$0$Counter$overflow(void );
 # 55 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Read.nc"
@@ -4470,37 +4464,37 @@ error_t error);
 # 90 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimer.nc"
 static void DisseminationEngineImplP$TrickleTimer$fired(
 # 50 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationEngineImplP.nc"
-uint16_t arg_0x7f7cb735bb40);
+uint16_t arg_0x7faddab65b40);
 # 85 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimer.nc"
 static void DisseminationEngineImplP$TrickleTimer$default$incrementCounter(
 # 50 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationEngineImplP.nc"
-uint16_t arg_0x7f7cb735bb40);
+uint16_t arg_0x7faddab65b40);
 # 80 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimer.nc"
 static void DisseminationEngineImplP$TrickleTimer$default$reset(
 # 50 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationEngineImplP.nc"
-uint16_t arg_0x7f7cb735bb40);
+uint16_t arg_0x7faddab65b40);
 # 68 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimer.nc"
 static error_t DisseminationEngineImplP$TrickleTimer$default$start(
 # 50 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationEngineImplP.nc"
-uint16_t arg_0x7f7cb735bb40);
+uint16_t arg_0x7faddab65b40);
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationCache.nc"
 static void DisseminationEngineImplP$DisseminationCache$default$storeData(
 # 49 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationEngineImplP.nc"
-uint16_t arg_0x7f7cb735c730, 
+uint16_t arg_0x7faddab66730, 
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationCache.nc"
 void * data, uint8_t size, uint32_t seqno);
 #line 45
 static error_t DisseminationEngineImplP$DisseminationCache$start(
 # 49 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationEngineImplP.nc"
-uint16_t arg_0x7f7cb735c730);
+uint16_t arg_0x7faddab66730);
 # 49 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationCache.nc"
 static uint32_t DisseminationEngineImplP$DisseminationCache$default$requestSeqno(
 # 49 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationEngineImplP.nc"
-uint16_t arg_0x7f7cb735c730);
+uint16_t arg_0x7faddab66730);
 # 47 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationCache.nc"
 static void *DisseminationEngineImplP$DisseminationCache$default$requestData(
 # 49 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationEngineImplP.nc"
-uint16_t arg_0x7f7cb735c730, 
+uint16_t arg_0x7faddab66730, 
 # 47 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationCache.nc"
 uint8_t *size);
 # 78 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Receive.nc"
@@ -4525,7 +4519,7 @@ static error_t DisseminationEngineImplP$StdControl$start(void );
 #line 95
 static error_t DisseminationEngineImplP$DisseminatorControl$default$start(
 # 51 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationEngineImplP.nc"
-uint16_t arg_0x7f7cb735ae40);
+uint16_t arg_0x7faddab63e40);
 # 80 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/AMSend.nc"
 static error_t /*DisseminationEngineP.DisseminationSendC.SenderC.AMQueueEntryP*/AMQueueEntryP$0$AMSend$send(am_addr_t addr, 
 #line 71
@@ -4563,7 +4557,7 @@ error_t error);
 # 110 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/AMSend.nc"
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$sendDone(
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/system/AMQueueImplP.nc"
-am_id_t arg_0x7f7cb72d1b60, 
+am_id_t arg_0x7faddaad9b60, 
 # 103 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -4576,7 +4570,7 @@ error_t error);
 # 75 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Send.nc"
 static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$send(
 # 46 "/home/marco/tinyos-release-tinyos-2_1_2/tos/system/AMQueueImplP.nc"
-uint8_t arg_0x7f7cb72d2940, 
+uint8_t arg_0x7faddaada940, 
 # 67 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -4594,7 +4588,7 @@ void *
 
 /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$getPayload(
 # 46 "/home/marco/tinyos-release-tinyos-2_1_2/tos/system/AMQueueImplP.nc"
-uint8_t arg_0x7f7cb72d2940, 
+uint8_t arg_0x7faddaada940, 
 # 122 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -4603,11 +4597,11 @@ uint8_t len);
 #line 112
 static uint8_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$maxPayloadLength(
 # 46 "/home/marco/tinyos-release-tinyos-2_1_2/tos/system/AMQueueImplP.nc"
-uint8_t arg_0x7f7cb72d2940);
+uint8_t arg_0x7faddaada940);
 # 100 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Send.nc"
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone(
 # 46 "/home/marco/tinyos-release-tinyos-2_1_2/tos/system/AMQueueImplP.nc"
-uint8_t arg_0x7f7cb72d2940, 
+uint8_t arg_0x7faddaada940, 
 # 96 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -4639,19 +4633,19 @@ static error_t /*EnvAppC.DisseminatorC.DisseminatorP*/DisseminatorP$0$StdControl
 # 90 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimer.nc"
 static void /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$TrickleTimer$default$fired(
 # 58 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimerImplP.nc"
-uint8_t arg_0x7f7cb71f3aa0);
+uint8_t arg_0x7fadda9fcaa0);
 # 85 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimer.nc"
 static void /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$TrickleTimer$incrementCounter(
 # 58 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimerImplP.nc"
-uint8_t arg_0x7f7cb71f3aa0);
+uint8_t arg_0x7fadda9fcaa0);
 # 80 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimer.nc"
 static void /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$TrickleTimer$reset(
 # 58 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimerImplP.nc"
-uint8_t arg_0x7f7cb71f3aa0);
+uint8_t arg_0x7fadda9fcaa0);
 # 68 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimer.nc"
 static error_t /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$TrickleTimer$start(
 # 58 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimerImplP.nc"
-uint8_t arg_0x7f7cb71f3aa0);
+uint8_t arg_0x7fadda9fcaa0);
 # 62 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Init.nc"
 static error_t /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$Init$init(void );
 # 75 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/TaskBasic.nc"
@@ -4735,7 +4729,7 @@ static void /*CtpP.Forwarder*/CtpForwardingEngineP$0$LinkEstimator$evicted(am_ad
 # 31 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Intercept.nc"
 static bool /*CtpP.Forwarder*/CtpForwardingEngineP$0$Intercept$default$forward(
 # 114 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/CtpForwardingEngineP.nc"
-collection_id_t arg_0x7f7cb7066020, 
+collection_id_t arg_0x7fadda86e020, 
 # 20 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Intercept.nc"
 message_t * msg, 
 
@@ -4786,7 +4780,7 @@ message_t *
 
 /*CtpP.Forwarder*/CtpForwardingEngineP$0$Snoop$default$receive(
 # 113 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/CtpForwardingEngineP.nc"
-collection_id_t arg_0x7f7cb7067370, 
+collection_id_t arg_0x7fadda870370, 
 # 71 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -4799,7 +4793,7 @@ uint8_t len);
 # 75 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Send.nc"
 static error_t /*CtpP.Forwarder*/CtpForwardingEngineP$0$Send$send(
 # 111 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/CtpForwardingEngineP.nc"
-uint8_t arg_0x7f7cb706a470, 
+uint8_t arg_0x7fadda872470, 
 # 67 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -4817,7 +4811,7 @@ void *
 
 /*CtpP.Forwarder*/CtpForwardingEngineP$0$Send$getPayload(
 # 111 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/CtpForwardingEngineP.nc"
-uint8_t arg_0x7f7cb706a470, 
+uint8_t arg_0x7fadda872470, 
 # 122 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -4826,11 +4820,11 @@ uint8_t len);
 #line 112
 static uint8_t /*CtpP.Forwarder*/CtpForwardingEngineP$0$Send$maxPayloadLength(
 # 111 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/CtpForwardingEngineP.nc"
-uint8_t arg_0x7f7cb706a470);
+uint8_t arg_0x7fadda872470);
 # 100 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Send.nc"
 static void /*CtpP.Forwarder*/CtpForwardingEngineP$0$Send$default$sendDone(
 # 111 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/CtpForwardingEngineP.nc"
-uint8_t arg_0x7f7cb706a470, 
+uint8_t arg_0x7fadda872470, 
 # 96 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -4856,7 +4850,7 @@ message_t *
 
 /*CtpP.Forwarder*/CtpForwardingEngineP$0$Receive$default$receive(
 # 112 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/CtpForwardingEngineP.nc"
-collection_id_t arg_0x7f7cb70696a0, 
+collection_id_t arg_0x7fadda8716a0, 
 # 71 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -4943,7 +4937,7 @@ uint8_t len);
 # 46 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/CollectionId.nc"
 static collection_id_t /*CtpP.Forwarder*/CtpForwardingEngineP$0$CollectionId$default$fetch(
 # 146 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/CtpForwardingEngineP.nc"
-uint8_t arg_0x7f7cb70346a0);
+uint8_t arg_0x7fadda83d6a0);
 # 97 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Pool.nc"
 static 
 #line 94
@@ -5293,7 +5287,7 @@ static error_t EnvC$Temperature$read(void );
 # 64 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/Timer.nc"
 static void EnvC$Timer$startPeriodic(uint32_t dt);
 # 36 "EnvC.nc"
-enum EnvC$__nesc_unnamed4353 {
+enum EnvC$__nesc_unnamed4352 {
 #line 36
   EnvC$readTemperature = 0U
 };
@@ -5302,7 +5296,7 @@ typedef int EnvC$__nesc_sillytask_readTemperature[EnvC$readTemperature];
 
 
 
-enum EnvC$__nesc_unnamed4354 {
+enum EnvC$__nesc_unnamed4353 {
 #line 40
   EnvC$readHumidity = 1U
 };
@@ -5312,7 +5306,7 @@ typedef int EnvC$__nesc_sillytask_readHumidity[EnvC$readHumidity];
 
 
 
-enum EnvC$__nesc_unnamed4355 {
+enum EnvC$__nesc_unnamed4354 {
 #line 45
   EnvC$computeAverages = 2U
 };
@@ -5404,7 +5398,7 @@ static am_addr_t TossimActiveMessageC$amAddress(void );
 # 110 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/AMSend.nc"
 static void TossimActiveMessageC$AMSend$sendDone(
 # 47 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x7f7cb7abcc80, 
+am_id_t arg_0x7faddb2c5c80, 
 # 103 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -5423,7 +5417,7 @@ message_t *
 
 TossimActiveMessageC$Snoop$receive(
 # 49 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x7f7cb7aa1a60, 
+am_id_t arg_0x7faddb2aaa60, 
 # 71 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -5442,7 +5436,7 @@ message_t *
 
 TossimActiveMessageC$Receive$receive(
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x7f7cb7aa2e50, 
+am_id_t arg_0x7faddb2abe50, 
 # 71 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -5602,7 +5596,7 @@ double reverseGain);
 static bool TossimPacketModelC$GainRadioModel$clearChannel(void );
 static void TossimPacketModelC$GainRadioModel$setPendingTransmission(void );
 # 96 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/TossimPacketModelC.nc"
-enum TossimPacketModelC$__nesc_unnamed4356 {
+enum TossimPacketModelC$__nesc_unnamed4355 {
 #line 96
   TossimPacketModelC$startDoneTask = 3U
 };
@@ -5612,14 +5606,14 @@ typedef int TossimPacketModelC$__nesc_sillytask_startDoneTask[TossimPacketModelC
 
 
 
-enum TossimPacketModelC$__nesc_unnamed4357 {
+enum TossimPacketModelC$__nesc_unnamed4356 {
 #line 101
   TossimPacketModelC$stopDoneTask = 4U
 };
 #line 101
 typedef int TossimPacketModelC$__nesc_sillytask_stopDoneTask[TossimPacketModelC$stopDoneTask];
 #line 145
-enum TossimPacketModelC$__nesc_unnamed4358 {
+enum TossimPacketModelC$__nesc_unnamed4357 {
 #line 145
   TossimPacketModelC$sendDoneTask = 5U
 };
@@ -5908,11 +5902,11 @@ int sim_main_start_mote(void )   ;
 # 75 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/TaskBasic.nc"
 static void SimSchedulerBasicP$TaskBasic$runTask(
 # 49 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0x7f7cb7b74020);
+uint8_t arg_0x7faddb37d020);
 
 
 
-enum SimSchedulerBasicP$__nesc_unnamed4359 {
+enum SimSchedulerBasicP$__nesc_unnamed4358 {
 
   SimSchedulerBasicP$NUM_TASKS = 17U, 
   SimSchedulerBasicP$NO_TASK = 255
@@ -6113,7 +6107,7 @@ uint32_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAs
 
 
 
-enum /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$__nesc_unnamed4360 {
+enum /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$__nesc_unnamed4359 {
   Atm128AlarmAsyncP$0$MINDT = 2, 
   Atm128AlarmAsyncP$0$MAXT = 230
 };
@@ -6351,7 +6345,7 @@ static void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$stop(void );
 # 83 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/Timer.nc"
 static void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$fired(void );
 # 74 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/AlarmToTimerC.nc"
-enum /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$__nesc_unnamed4361 {
+enum /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$__nesc_unnamed4360 {
 #line 74
   AlarmToTimerC$0$fired = 6U
 };
@@ -6393,16 +6387,16 @@ static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$stop
 
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x7f7cb73f5950);
+uint8_t arg_0x7faddabfd950);
 #line 71
-enum /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4362 {
+enum /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4361 {
 #line 71
   VirtualizeTimerC$0$updateFromTimer = 7U
 };
 #line 71
 typedef int /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_sillytask_updateFromTimer[/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$updateFromTimer];
 #line 53
-enum /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4363 {
+enum /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4362 {
 
   VirtualizeTimerC$0$NUM_TIMERS = 5U, 
   VirtualizeTimerC$0$END_OF_LIST = 255
@@ -6416,7 +6410,7 @@ enum /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4363 {
 
 
 #line 59
-typedef struct /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4364 {
+typedef struct /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4363 {
 
   uint32_t t0;
   uint32_t dt;
@@ -6489,7 +6483,7 @@ static void /*EnvAppC.TSensor.ConstantSensorC*/ConstantSensorC$0$Read$readDone(e
 # 67 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/TaskBasic.nc"
 static error_t /*EnvAppC.TSensor.ConstantSensorC*/ConstantSensorC$0$senseResult$postTask(void );
 # 47 "/home/marco/tinyos-release-tinyos-2_1_2/tos/system/ConstantSensorC.nc"
-enum /*EnvAppC.TSensor.ConstantSensorC*/ConstantSensorC$0$__nesc_unnamed4365 {
+enum /*EnvAppC.TSensor.ConstantSensorC*/ConstantSensorC$0$__nesc_unnamed4364 {
 #line 47
   ConstantSensorC$0$senseResult = 8U
 };
@@ -6506,7 +6500,7 @@ static void /*EnvAppC.HSensor.ConstantSensorC*/ConstantSensorC$1$Read$readDone(e
 # 67 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/TaskBasic.nc"
 static error_t /*EnvAppC.HSensor.ConstantSensorC*/ConstantSensorC$1$senseResult$postTask(void );
 # 47 "/home/marco/tinyos-release-tinyos-2_1_2/tos/system/ConstantSensorC.nc"
-enum /*EnvAppC.HSensor.ConstantSensorC*/ConstantSensorC$1$__nesc_unnamed4366 {
+enum /*EnvAppC.HSensor.ConstantSensorC*/ConstantSensorC$1$__nesc_unnamed4365 {
 #line 47
   ConstantSensorC$1$senseResult = 9U
 };
@@ -6547,36 +6541,36 @@ static uint8_t DisseminationEngineImplP$AMSend$maxPayloadLength(void );
 # 85 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimer.nc"
 static void DisseminationEngineImplP$TrickleTimer$incrementCounter(
 # 50 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationEngineImplP.nc"
-uint16_t arg_0x7f7cb735bb40);
+uint16_t arg_0x7faddab65b40);
 # 80 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimer.nc"
 static void DisseminationEngineImplP$TrickleTimer$reset(
 # 50 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationEngineImplP.nc"
-uint16_t arg_0x7f7cb735bb40);
+uint16_t arg_0x7faddab65b40);
 # 68 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimer.nc"
 static error_t DisseminationEngineImplP$TrickleTimer$start(
 # 50 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationEngineImplP.nc"
-uint16_t arg_0x7f7cb735bb40);
+uint16_t arg_0x7faddab65b40);
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationCache.nc"
 static void DisseminationEngineImplP$DisseminationCache$storeData(
 # 49 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationEngineImplP.nc"
-uint16_t arg_0x7f7cb735c730, 
+uint16_t arg_0x7faddab66730, 
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationCache.nc"
 void * data, uint8_t size, uint32_t seqno);
 static uint32_t DisseminationEngineImplP$DisseminationCache$requestSeqno(
 # 49 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationEngineImplP.nc"
-uint16_t arg_0x7f7cb735c730);
+uint16_t arg_0x7faddab66730);
 # 47 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationCache.nc"
 static void *DisseminationEngineImplP$DisseminationCache$requestData(
 # 49 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationEngineImplP.nc"
-uint16_t arg_0x7f7cb735c730, 
+uint16_t arg_0x7faddab66730, 
 # 47 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationCache.nc"
 uint8_t *size);
 # 95 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/StdControl.nc"
 static error_t DisseminationEngineImplP$DisseminatorControl$start(
 # 51 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationEngineImplP.nc"
-uint16_t arg_0x7f7cb735ae40);
+uint16_t arg_0x7faddab63e40);
 #line 64
-enum DisseminationEngineImplP$__nesc_unnamed4367 {
+enum DisseminationEngineImplP$__nesc_unnamed4366 {
 #line 64
   DisseminationEngineImplP$NUM_DISSEMINATORS = 1U
 };
@@ -6714,7 +6708,7 @@ static inline void */*DisseminationEngineP.DisseminationSendC.SenderC.AMQueueEnt
 # 80 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/AMSend.nc"
 static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$send(
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/system/AMQueueImplP.nc"
-am_id_t arg_0x7f7cb72d1b60, 
+am_id_t arg_0x7faddaad9b60, 
 # 80 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/AMSend.nc"
 am_addr_t addr, 
 #line 71
@@ -6735,7 +6729,7 @@ void *
 
 /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$getPayload(
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/system/AMQueueImplP.nc"
-am_id_t arg_0x7f7cb72d1b60, 
+am_id_t arg_0x7faddaad9b60, 
 # 132 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -6744,11 +6738,11 @@ uint8_t len);
 #line 123
 static uint8_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$maxPayloadLength(
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/system/AMQueueImplP.nc"
-am_id_t arg_0x7f7cb72d1b60);
+am_id_t arg_0x7faddaad9b60);
 # 100 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Send.nc"
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(
 # 46 "/home/marco/tinyos-release-tinyos-2_1_2/tos/system/AMQueueImplP.nc"
-uint8_t arg_0x7f7cb72d2940, 
+uint8_t arg_0x7faddaada940, 
 # 96 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -6778,14 +6772,14 @@ static am_id_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMPacket$type(
 #line 143
 message_t * amsg);
 # 126 "/home/marco/tinyos-release-tinyos-2_1_2/tos/system/AMQueueImplP.nc"
-enum /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4368 {
+enum /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4367 {
 #line 126
   AMQueueImplP$0$CancelTask = 10U
 };
 #line 126
 typedef int /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_sillytask_CancelTask[/*AMQueueP.AMQueueImplP*/AMQueueImplP$0$CancelTask];
 #line 169
-enum /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4369 {
+enum /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4368 {
 #line 169
   AMQueueImplP$0$errorTask = 11U
 };
@@ -6793,7 +6787,7 @@ enum /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4369 {
 typedef int /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_sillytask_errorTask[/*AMQueueP.AMQueueImplP*/AMQueueImplP$0$errorTask];
 #line 57
 #line 55
-typedef struct /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4370 {
+typedef struct /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4369 {
   message_t * msg;
 } /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$queue_entry_t;
 
@@ -6852,7 +6846,7 @@ static error_t /*EnvAppC.DisseminatorC.DisseminatorP*/DisseminatorP$0$Disseminat
 # 69 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/DisseminationValue.nc"
 static void /*EnvAppC.DisseminatorC.DisseminatorP*/DisseminatorP$0$DisseminationValue$changed(void );
 # 62 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminatorP.nc"
-enum /*EnvAppC.DisseminatorC.DisseminatorP*/DisseminatorP$0$__nesc_unnamed4371 {
+enum /*EnvAppC.DisseminatorC.DisseminatorP*/DisseminatorP$0$__nesc_unnamed4370 {
 #line 62
   DisseminatorP$0$changedTask = 12U
 };
@@ -6920,7 +6914,7 @@ static uint16_t /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/Tric
 # 90 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimer.nc"
 static void /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$TrickleTimer$fired(
 # 58 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimerImplP.nc"
-uint8_t arg_0x7f7cb71f3aa0);
+uint8_t arg_0x7fadda9fcaa0);
 # 67 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/TaskBasic.nc"
 static error_t /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$timerTask$postTask(void );
 # 136 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/Timer.nc"
@@ -6937,7 +6931,7 @@ static void /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleT
 
 static void /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$Timer$stop(void );
 # 154 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimerImplP.nc"
-enum /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$__nesc_unnamed4372 {
+enum /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$__nesc_unnamed4371 {
 #line 154
   TrickleTimerImplP$0$timerTask = 13U
 };
@@ -6945,7 +6939,7 @@ enum /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImp
 typedef int /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$__nesc_sillytask_timerTask[/*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$timerTask];
 #line 75
 #line 70
-typedef struct /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$__nesc_unnamed4373 {
+typedef struct /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$__nesc_unnamed4372 {
   uint16_t period;
   uint32_t time;
   uint32_t remainder;
@@ -6988,7 +6982,7 @@ static inline uint16_t RandomMlcgC$Random$rand16(void );
 # 51 "/home/marco/tinyos-release-tinyos-2_1_2/tos/system/BitVectorC.nc"
 typedef uint8_t /*DisseminationTimerP.TrickleTimerMilliC.PendingVector*/BitVectorC$0$int_type;
 
-enum /*DisseminationTimerP.TrickleTimerMilliC.PendingVector*/BitVectorC$0$__nesc_unnamed4374 {
+enum /*DisseminationTimerP.TrickleTimerMilliC.PendingVector*/BitVectorC$0$__nesc_unnamed4373 {
 
   BitVectorC$0$ELEMENT_SIZE = 8 * sizeof(/*DisseminationTimerP.TrickleTimerMilliC.PendingVector*/BitVectorC$0$int_type ), 
   BitVectorC$0$ARRAY_SIZE = (1U + /*DisseminationTimerP.TrickleTimerMilliC.PendingVector*/BitVectorC$0$ELEMENT_SIZE - 1) / /*DisseminationTimerP.TrickleTimerMilliC.PendingVector*/BitVectorC$0$ELEMENT_SIZE
@@ -7036,7 +7030,7 @@ static inline void /*DisseminationTimerP.TrickleTimerMilliC.PendingVector*/BitVe
 #line 51
 typedef uint8_t /*DisseminationTimerP.TrickleTimerMilliC.ChangeVector*/BitVectorC$1$int_type;
 
-enum /*DisseminationTimerP.TrickleTimerMilliC.ChangeVector*/BitVectorC$1$__nesc_unnamed4375 {
+enum /*DisseminationTimerP.TrickleTimerMilliC.ChangeVector*/BitVectorC$1$__nesc_unnamed4374 {
 
   BitVectorC$1$ELEMENT_SIZE = 8 * sizeof(/*DisseminationTimerP.TrickleTimerMilliC.ChangeVector*/BitVectorC$1$int_type ), 
   BitVectorC$1$ARRAY_SIZE = (1U + /*DisseminationTimerP.TrickleTimerMilliC.ChangeVector*/BitVectorC$1$ELEMENT_SIZE - 1) / /*DisseminationTimerP.TrickleTimerMilliC.ChangeVector*/BitVectorC$1$ELEMENT_SIZE
@@ -7143,7 +7137,7 @@ static bool /*CtpP.Forwarder*/CtpForwardingEngineP$0$SentCache$lookup(/*CtpP.For
 # 31 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Intercept.nc"
 static bool /*CtpP.Forwarder*/CtpForwardingEngineP$0$Intercept$forward(
 # 114 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/CtpForwardingEngineP.nc"
-collection_id_t arg_0x7f7cb7066020, 
+collection_id_t arg_0x7fadda86e020, 
 # 20 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Intercept.nc"
 message_t * msg, 
 
@@ -7166,7 +7160,7 @@ message_t *
 
 /*CtpP.Forwarder*/CtpForwardingEngineP$0$Snoop$receive(
 # 113 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/CtpForwardingEngineP.nc"
-collection_id_t arg_0x7f7cb7067370, 
+collection_id_t arg_0x7fadda870370, 
 # 71 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -7181,7 +7175,7 @@ static uint16_t /*CtpP.Forwarder*/CtpForwardingEngineP$0$Random$rand16(void );
 # 100 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Send.nc"
 static void /*CtpP.Forwarder*/CtpForwardingEngineP$0$Send$sendDone(
 # 111 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/CtpForwardingEngineP.nc"
-uint8_t arg_0x7f7cb706a470, 
+uint8_t arg_0x7fadda872470, 
 # 96 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -7271,7 +7265,7 @@ message_t *
 
 /*CtpP.Forwarder*/CtpForwardingEngineP$0$Receive$receive(
 # 112 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/CtpForwardingEngineP.nc"
-collection_id_t arg_0x7f7cb70696a0, 
+collection_id_t arg_0x7fadda8716a0, 
 # 71 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -7326,9 +7320,9 @@ static error_t /*CtpP.Forwarder*/CtpForwardingEngineP$0$MessagePool$put(
 # 46 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/CollectionId.nc"
 static collection_id_t /*CtpP.Forwarder*/CtpForwardingEngineP$0$CollectionId$fetch(
 # 146 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/CtpForwardingEngineP.nc"
-uint8_t arg_0x7f7cb70346a0);
+uint8_t arg_0x7fadda83d6a0);
 #line 234
-enum /*CtpP.Forwarder*/CtpForwardingEngineP$0$__nesc_unnamed4376 {
+enum /*CtpP.Forwarder*/CtpForwardingEngineP$0$__nesc_unnamed4375 {
 #line 234
   CtpForwardingEngineP$0$sendTask = 14U
 };
@@ -7341,7 +7335,7 @@ static inline bool /*CtpP.Forwarder*/CtpForwardingEngineP$0$hasState(uint8_t sta
 static inline void /*CtpP.Forwarder*/CtpForwardingEngineP$0$setState(uint8_t state);
 
 
-enum /*CtpP.Forwarder*/CtpForwardingEngineP$0$__nesc_unnamed4377 {
+enum /*CtpP.Forwarder*/CtpForwardingEngineP$0$__nesc_unnamed4376 {
   CtpForwardingEngineP$0$QUEUE_CONGESTED = 0x1, 
   CtpForwardingEngineP$0$ROUTING_ON = 0x2, 
   CtpForwardingEngineP$0$RADIO_ON = 0x4, 
@@ -7356,7 +7350,7 @@ uint8_t /*CtpP.Forwarder*/CtpForwardingEngineP$0$forwardingState[1000];
 
 uint8_t /*CtpP.Forwarder*/CtpForwardingEngineP$0$seqno[1000];
 
-enum /*CtpP.Forwarder*/CtpForwardingEngineP$0$__nesc_unnamed4378 {
+enum /*CtpP.Forwarder*/CtpForwardingEngineP$0$__nesc_unnamed4377 {
   CtpForwardingEngineP$0$CLIENT_COUNT = 1U
 };
 
@@ -7667,7 +7661,7 @@ static uint8_t /*CtpP.SentCacheP.CacheP*/LruCtpMsgCacheP$0$CtpPacket$getSequence
 static uint8_t /*CtpP.SentCacheP.CacheP*/LruCtpMsgCacheP$0$CtpPacket$getType(message_t *msg);
 # 58 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/LruCtpMsgCacheP.nc"
 #line 53
-typedef struct /*CtpP.SentCacheP.CacheP*/LruCtpMsgCacheP$0$__nesc_unnamed4379 {
+typedef struct /*CtpP.SentCacheP.CacheP*/LruCtpMsgCacheP$0$__nesc_unnamed4378 {
   am_addr_t origin;
   uint8_t seqno;
   collection_id_t type;
@@ -7767,7 +7761,7 @@ static bool LinkEstimatorP$LinkPacketMetadata$highChannelQuality(
 #line 44
 message_t * msg);
 # 66 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/4bitle/LinkEstimatorP.nc"
-enum LinkEstimatorP$__nesc_unnamed4380 {
+enum LinkEstimatorP$__nesc_unnamed4379 {
 
 
   LinkEstimatorP$EVICT_ETX_THRESHOLD = 65, 
@@ -8076,14 +8070,14 @@ message_t * amsg);
 static void /*CtpP.Router*/CtpRoutingEngineP$0$Routing$routeFound(void );
 static void /*CtpP.Router*/CtpRoutingEngineP$0$Routing$noRoute(void );
 # 271 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/ctp/CtpRoutingEngineP.nc"
-enum /*CtpP.Router*/CtpRoutingEngineP$0$__nesc_unnamed4381 {
+enum /*CtpP.Router*/CtpRoutingEngineP$0$__nesc_unnamed4380 {
 #line 271
   CtpRoutingEngineP$0$updateRouteTask = 15U
 };
 #line 271
 typedef int /*CtpP.Router*/CtpRoutingEngineP$0$__nesc_sillytask_updateRouteTask[/*CtpP.Router*/CtpRoutingEngineP$0$updateRouteTask];
 #line 390
-enum /*CtpP.Router*/CtpRoutingEngineP$0$__nesc_unnamed4382 {
+enum /*CtpP.Router*/CtpRoutingEngineP$0$__nesc_unnamed4381 {
 #line 390
   CtpRoutingEngineP$0$sendBeaconTask = 16U
 };
@@ -8121,8 +8115,8 @@ uint32_t /*CtpP.Router*/CtpRoutingEngineP$0$parentChanges[1000];
 
 
 static inline void /*CtpP.Router*/CtpRoutingEngineP$0$routingTableInit(void );
-static uint8_t /*CtpP.Router*/CtpRoutingEngineP$0$routingTableFind(am_addr_t arg_0x7f7cb6ce5d60);
-static inline error_t /*CtpP.Router*/CtpRoutingEngineP$0$routingTableUpdateEntry(am_addr_t arg_0x7f7cb6ce4710, am_addr_t arg_0x7f7cb6ce49f0, uint16_t arg_0x7f7cb6ce4cd0);
+static uint8_t /*CtpP.Router*/CtpRoutingEngineP$0$routingTableFind(am_addr_t arg_0x7fadda4eed60);
+static inline error_t /*CtpP.Router*/CtpRoutingEngineP$0$routingTableUpdateEntry(am_addr_t arg_0x7fadda4ec710, am_addr_t arg_0x7fadda4ec9f0, uint16_t arg_0x7fadda4eccd0);
 static inline error_t /*CtpP.Router*/CtpRoutingEngineP$0$routingTableEvict(am_addr_t neighbor);
 #line 181
 uint32_t /*CtpP.Router*/CtpRoutingEngineP$0$currentInterval[1000];
@@ -8717,9 +8711,9 @@ static inline void DisseminationEngineImplP$TrickleTimer$default$incrementCounte
 }
 
 # 85 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimer.nc"
-inline static void DisseminationEngineImplP$TrickleTimer$incrementCounter(uint16_t arg_0x7f7cb735bb40){
+inline static void DisseminationEngineImplP$TrickleTimer$incrementCounter(uint16_t arg_0x7faddab65b40){
 #line 85
-  switch (arg_0x7f7cb735bb40) {
+  switch (arg_0x7faddab65b40) {
 #line 85
     case 243:
 #line 85
@@ -8729,7 +8723,7 @@ inline static void DisseminationEngineImplP$TrickleTimer$incrementCounter(uint16
 #line 85
     default:
 #line 85
-      DisseminationEngineImplP$TrickleTimer$default$incrementCounter(arg_0x7f7cb735bb40);
+      DisseminationEngineImplP$TrickleTimer$default$incrementCounter(arg_0x7faddab65b40);
 #line 85
       break;
 #line 85
@@ -8744,9 +8738,9 @@ static inline void DisseminationEngineImplP$TrickleTimer$default$reset(uint16_t 
 }
 
 # 80 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimer.nc"
-inline static void DisseminationEngineImplP$TrickleTimer$reset(uint16_t arg_0x7f7cb735bb40){
+inline static void DisseminationEngineImplP$TrickleTimer$reset(uint16_t arg_0x7faddab65b40){
 #line 80
-  switch (arg_0x7f7cb735bb40) {
+  switch (arg_0x7faddab65b40) {
 #line 80
     case 243:
 #line 80
@@ -8756,7 +8750,7 @@ inline static void DisseminationEngineImplP$TrickleTimer$reset(uint16_t arg_0x7f
 #line 80
     default:
 #line 80
-      DisseminationEngineImplP$TrickleTimer$default$reset(arg_0x7f7cb735bb40);
+      DisseminationEngineImplP$TrickleTimer$default$reset(arg_0x7faddab65b40);
 #line 80
       break;
 #line 80
@@ -8776,9 +8770,9 @@ uint32_t seqno)
 }
 
 # 48 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationCache.nc"
-inline static void DisseminationEngineImplP$DisseminationCache$storeData(uint16_t arg_0x7f7cb735c730, void * data, uint8_t size, uint32_t seqno){
+inline static void DisseminationEngineImplP$DisseminationCache$storeData(uint16_t arg_0x7faddab66730, void * data, uint8_t size, uint32_t seqno){
 #line 48
-  switch (arg_0x7f7cb735c730) {
+  switch (arg_0x7faddab66730) {
 #line 48
     case 243:
 #line 48
@@ -8788,7 +8782,7 @@ inline static void DisseminationEngineImplP$DisseminationCache$storeData(uint16_
 #line 48
     default:
 #line 48
-      DisseminationEngineImplP$DisseminationCache$default$storeData(arg_0x7f7cb735c730, data, size, seqno);
+      DisseminationEngineImplP$DisseminationCache$default$storeData(arg_0x7faddab66730, data, size, seqno);
 #line 48
       break;
 #line 48
@@ -8815,13 +8809,13 @@ DisseminationEngineImplP$DisseminationCache$default$requestSeqno(uint16_t key)
 }
 
 # 49 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationCache.nc"
-inline static uint32_t DisseminationEngineImplP$DisseminationCache$requestSeqno(uint16_t arg_0x7f7cb735c730){
+inline static uint32_t DisseminationEngineImplP$DisseminationCache$requestSeqno(uint16_t arg_0x7faddab66730){
 #line 49
   unsigned int __nesc_result;
 #line 49
 
 #line 49
-  switch (arg_0x7f7cb735c730) {
+  switch (arg_0x7faddab66730) {
 #line 49
     case 243:
 #line 49
@@ -8831,7 +8825,7 @@ inline static uint32_t DisseminationEngineImplP$DisseminationCache$requestSeqno(
 #line 49
     default:
 #line 49
-      __nesc_result = DisseminationEngineImplP$DisseminationCache$default$requestSeqno(arg_0x7f7cb735c730);
+      __nesc_result = DisseminationEngineImplP$DisseminationCache$default$requestSeqno(arg_0x7faddab66730);
 #line 49
       break;
 #line 49
@@ -9225,7 +9219,7 @@ static inline /*CtpP.QEntryPoolP.PoolP*/PoolP$1$pool_t */*CtpP.QEntryPoolP.PoolP
 # 97 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Pool.nc"
 inline static /*CtpP.Forwarder*/CtpForwardingEngineP$0$QEntryPool$t * /*CtpP.Forwarder*/CtpForwardingEngineP$0$QEntryPool$get(void ){
 #line 97
-  struct __nesc_unnamed4339 *__nesc_result;
+  struct __nesc_unnamed4338 *__nesc_result;
 #line 97
 
 #line 97
@@ -9394,13 +9388,13 @@ uint8_t len)
 }
 
 # 31 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Intercept.nc"
-inline static bool /*CtpP.Forwarder*/CtpForwardingEngineP$0$Intercept$forward(collection_id_t arg_0x7f7cb7066020, message_t * msg, void * payload, uint8_t len){
+inline static bool /*CtpP.Forwarder*/CtpForwardingEngineP$0$Intercept$forward(collection_id_t arg_0x7fadda86e020, message_t * msg, void * payload, uint8_t len){
 #line 31
   unsigned char __nesc_result;
 #line 31
 
 #line 31
-    __nesc_result = /*CtpP.Forwarder*/CtpForwardingEngineP$0$Intercept$default$forward(arg_0x7f7cb7066020, msg, payload, len);
+    __nesc_result = /*CtpP.Forwarder*/CtpForwardingEngineP$0$Intercept$default$forward(arg_0x7fadda86e020, msg, payload, len);
 #line 31
 
 #line 31
@@ -9418,13 +9412,13 @@ uint8_t len)
 }
 
 # 78 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Receive.nc"
-inline static message_t * /*CtpP.Forwarder*/CtpForwardingEngineP$0$Receive$receive(collection_id_t arg_0x7f7cb70696a0, message_t * msg, void * payload, uint8_t len){
+inline static message_t * /*CtpP.Forwarder*/CtpForwardingEngineP$0$Receive$receive(collection_id_t arg_0x7fadda8716a0, message_t * msg, void * payload, uint8_t len){
 #line 78
   nx_struct message_t *__nesc_result;
 #line 78
 
 #line 78
-    __nesc_result = /*CtpP.Forwarder*/CtpForwardingEngineP$0$Receive$default$receive(arg_0x7f7cb70696a0, msg, payload, len);
+    __nesc_result = /*CtpP.Forwarder*/CtpForwardingEngineP$0$Receive$default$receive(arg_0x7fadda8716a0, msg, payload, len);
 #line 78
 
 #line 78
@@ -9496,7 +9490,7 @@ static inline /*CtpP.SendQueueP*/QueueC$0$queue_t /*CtpP.SendQueueP*/QueueC$0$Qu
 # 101 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Queue.nc"
 inline static /*CtpP.Forwarder*/CtpForwardingEngineP$0$SendQueue$t  /*CtpP.Forwarder*/CtpForwardingEngineP$0$SendQueue$element(uint8_t idx){
 #line 101
-  struct __nesc_unnamed4339 *__nesc_result;
+  struct __nesc_unnamed4338 *__nesc_result;
 #line 101
 
 #line 101
@@ -9545,13 +9539,13 @@ static inline uint8_t TossimActiveMessageC$AMSend$maxPayloadLength(am_id_t id)
 }
 
 # 123 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/AMSend.nc"
-inline static uint8_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$maxPayloadLength(am_id_t arg_0x7f7cb72d1b60){
+inline static uint8_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$maxPayloadLength(am_id_t arg_0x7faddaad9b60){
 #line 123
   unsigned char __nesc_result;
 #line 123
 
 #line 123
-  __nesc_result = TossimActiveMessageC$AMSend$maxPayloadLength(arg_0x7f7cb72d1b60);
+  __nesc_result = TossimActiveMessageC$AMSend$maxPayloadLength(arg_0x7faddaad9b60);
 #line 123
 
 #line 123
@@ -10295,13 +10289,13 @@ static inline message_t *TossimActiveMessageC$Receive$default$receive(am_id_t id
 }
 
 # 78 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Receive.nc"
-inline static message_t * TossimActiveMessageC$Receive$receive(am_id_t arg_0x7f7cb7aa2e50, message_t * msg, void * payload, uint8_t len){
+inline static message_t * TossimActiveMessageC$Receive$receive(am_id_t arg_0x7faddb2abe50, message_t * msg, void * payload, uint8_t len){
 #line 78
   nx_struct message_t *__nesc_result;
 #line 78
 
 #line 78
-  switch (arg_0x7f7cb7aa2e50) {
+  switch (arg_0x7faddb2abe50) {
 #line 78
     case 96:
 #line 78
@@ -10329,7 +10323,7 @@ inline static message_t * TossimActiveMessageC$Receive$receive(am_id_t arg_0x7f7
 #line 78
     default:
 #line 78
-      __nesc_result = TossimActiveMessageC$Receive$default$receive(arg_0x7f7cb7aa2e50, msg, payload, len);
+      __nesc_result = TossimActiveMessageC$Receive$default$receive(arg_0x7faddb2abe50, msg, payload, len);
 #line 78
       break;
 #line 78
@@ -10601,7 +10595,7 @@ static inline sim_time_t HplAtm128Timer0AsyncP$sim_to_clock(sim_time_t t)
 # 53 "/home/marco/tinyos-release-tinyos-2_1_2/tos/chips/atm128/timer/HplAtm128TimerCtrl8.nc"
 inline static Atm128_TIFR_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$TimerCtrl$getInterruptFlag(void ){
 #line 53
-  union __nesc_unnamed4314 __nesc_result;
+  union __nesc_unnamed4313 __nesc_result;
 #line 53
 
 #line 53
@@ -10636,13 +10630,13 @@ inline static uint16_t /*CtpP.Forwarder*/CtpForwardingEngineP$0$Random$rand16(vo
 }
 #line 52
 # 135 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/AMSend.nc"
-inline static void * /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$getPayload(am_id_t arg_0x7f7cb72d1b60, message_t * msg, uint8_t len){
+inline static void * /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$getPayload(am_id_t arg_0x7faddaad9b60, message_t * msg, uint8_t len){
 #line 135
   void *__nesc_result;
 #line 135
 
 #line 135
-  __nesc_result = TossimActiveMessageC$AMSend$getPayload(arg_0x7f7cb72d1b60, msg, len);
+  __nesc_result = TossimActiveMessageC$AMSend$getPayload(arg_0x7faddaad9b60, msg, len);
 #line 135
 
 #line 135
@@ -10712,13 +10706,13 @@ DisseminationEngineImplP$DisseminationCache$default$requestData(uint16_t key, ui
 }
 
 # 47 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/drip/DisseminationCache.nc"
-inline static void *DisseminationEngineImplP$DisseminationCache$requestData(uint16_t arg_0x7f7cb735c730, uint8_t *size){
+inline static void *DisseminationEngineImplP$DisseminationCache$requestData(uint16_t arg_0x7faddab66730, uint8_t *size){
 #line 47
   void *__nesc_result;
 #line 47
 
 #line 47
-  switch (arg_0x7f7cb735c730) {
+  switch (arg_0x7faddab66730) {
 #line 47
     case 243:
 #line 47
@@ -10728,7 +10722,7 @@ inline static void *DisseminationEngineImplP$DisseminationCache$requestData(uint
 #line 47
     default:
 #line 47
-      __nesc_result = DisseminationEngineImplP$DisseminationCache$default$requestData(arg_0x7f7cb735c730, size);
+      __nesc_result = DisseminationEngineImplP$DisseminationCache$default$requestData(arg_0x7faddab66730, size);
 #line 47
       break;
 #line 47
@@ -10862,13 +10856,13 @@ inline static am_addr_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMPacket$destina
 }
 #line 78
 # 80 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/AMSend.nc"
-inline static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$send(am_id_t arg_0x7f7cb72d1b60, am_addr_t addr, message_t * msg, uint8_t len){
+inline static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$send(am_id_t arg_0x7faddaad9b60, am_addr_t addr, message_t * msg, uint8_t len){
 #line 80
   unsigned char __nesc_result;
 #line 80
 
 #line 80
-  __nesc_result = TossimActiveMessageC$AMSend$send(arg_0x7f7cb72d1b60, addr, msg, len);
+  __nesc_result = TossimActiveMessageC$AMSend$send(arg_0x7faddaad9b60, addr, msg, len);
 #line 80
 
 #line 80
@@ -10877,9 +10871,9 @@ inline static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$send(am_id_
 }
 #line 80
 #line 110
-inline static void TossimActiveMessageC$AMSend$sendDone(am_id_t arg_0x7f7cb7abcc80, message_t * msg, error_t error){
+inline static void TossimActiveMessageC$AMSend$sendDone(am_id_t arg_0x7faddb2c5c80, message_t * msg, error_t error){
 #line 110
-  /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$sendDone(arg_0x7f7cb7abcc80, msg, error);
+  /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$sendDone(arg_0x7faddb2c5c80, msg, error);
 #line 110
 }
 #line 110
@@ -11644,9 +11638,9 @@ void
 }
 
 # 100 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Send.nc"
-inline static void /*CtpP.Forwarder*/CtpForwardingEngineP$0$Send$sendDone(uint8_t arg_0x7f7cb706a470, message_t * msg, error_t error){
+inline static void /*CtpP.Forwarder*/CtpForwardingEngineP$0$Send$sendDone(uint8_t arg_0x7fadda872470, message_t * msg, error_t error){
 #line 100
-  switch (arg_0x7f7cb706a470) {
+  switch (arg_0x7fadda872470) {
 #line 100
     case 0U:
 #line 100
@@ -11656,7 +11650,7 @@ inline static void /*CtpP.Forwarder*/CtpForwardingEngineP$0$Send$sendDone(uint8_
 #line 100
     default:
 #line 100
-      /*CtpP.Forwarder*/CtpForwardingEngineP$0$Send$default$sendDone(arg_0x7f7cb706a470, msg, error);
+      /*CtpP.Forwarder*/CtpForwardingEngineP$0$Send$default$sendDone(arg_0x7fadda872470, msg, error);
 #line 100
       break;
 #line 100
@@ -12026,7 +12020,7 @@ static inline const /*EnvAppC.DisseminatorC.DisseminatorP*/DisseminatorP$0$t */*
 # 55 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/DisseminationValue.nc"
 inline static const EnvC$CollectValue$t *EnvC$CollectValue$get(void ){
 #line 55
-  nx_struct __nesc_unnamed4282 const *__nesc_result;
+  nx_struct __nesc_unnamed4281 const *__nesc_result;
 #line 55
 
 #line 55
@@ -12109,13 +12103,13 @@ static inline collection_id_t /*CtpP.Forwarder*/CtpForwardingEngineP$0$Collectio
 }
 
 # 46 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/CollectionId.nc"
-inline static collection_id_t /*CtpP.Forwarder*/CtpForwardingEngineP$0$CollectionId$fetch(uint8_t arg_0x7f7cb70346a0){
+inline static collection_id_t /*CtpP.Forwarder*/CtpForwardingEngineP$0$CollectionId$fetch(uint8_t arg_0x7fadda83d6a0){
 #line 46
   unsigned char __nesc_result;
 #line 46
 
 #line 46
-  switch (arg_0x7f7cb70346a0) {
+  switch (arg_0x7fadda83d6a0) {
 #line 46
     case 0U:
 #line 46
@@ -12125,7 +12119,7 @@ inline static collection_id_t /*CtpP.Forwarder*/CtpForwardingEngineP$0$Collectio
 #line 46
     default:
 #line 46
-      __nesc_result = /*CtpP.Forwarder*/CtpForwardingEngineP$0$CollectionId$default$fetch(arg_0x7f7cb70346a0);
+      __nesc_result = /*CtpP.Forwarder*/CtpForwardingEngineP$0$CollectionId$default$fetch(arg_0x7fadda83d6a0);
 #line 46
       break;
 #line 46
@@ -12451,13 +12445,13 @@ uint8_t len)
 }
 
 # 78 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Receive.nc"
-inline static message_t * /*CtpP.Forwarder*/CtpForwardingEngineP$0$Snoop$receive(collection_id_t arg_0x7f7cb7067370, message_t * msg, void * payload, uint8_t len){
+inline static message_t * /*CtpP.Forwarder*/CtpForwardingEngineP$0$Snoop$receive(collection_id_t arg_0x7fadda870370, message_t * msg, void * payload, uint8_t len){
 #line 78
   nx_struct message_t *__nesc_result;
 #line 78
 
 #line 78
-    __nesc_result = /*CtpP.Forwarder*/CtpForwardingEngineP$0$Snoop$default$receive(arg_0x7f7cb7067370, msg, payload, len);
+    __nesc_result = /*CtpP.Forwarder*/CtpForwardingEngineP$0$Snoop$default$receive(arg_0x7fadda870370, msg, payload, len);
 #line 78
 
 #line 78
@@ -12510,13 +12504,13 @@ static inline message_t *TossimActiveMessageC$Snoop$default$receive(am_id_t id, 
 }
 
 # 78 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Receive.nc"
-inline static message_t * TossimActiveMessageC$Snoop$receive(am_id_t arg_0x7f7cb7aa1a60, message_t * msg, void * payload, uint8_t len){
+inline static message_t * TossimActiveMessageC$Snoop$receive(am_id_t arg_0x7faddb2aaa60, message_t * msg, void * payload, uint8_t len){
 #line 78
   nx_struct message_t *__nesc_result;
 #line 78
 
 #line 78
-  switch (arg_0x7f7cb7aa1a60) {
+  switch (arg_0x7faddb2aaa60) {
 #line 78
     case 113:
 #line 78
@@ -12526,7 +12520,7 @@ inline static message_t * TossimActiveMessageC$Snoop$receive(am_id_t arg_0x7f7cb
 #line 78
     default:
 #line 78
-      __nesc_result = TossimActiveMessageC$Snoop$default$receive(arg_0x7f7cb7aa1a60, msg, payload, len);
+      __nesc_result = TossimActiveMessageC$Snoop$default$receive(arg_0x7faddb2aaa60, msg, payload, len);
 #line 78
       break;
 #line 78
@@ -12902,13 +12896,13 @@ static inline error_t DisseminationEngineImplP$TrickleTimer$default$start(uint16
 }
 
 # 68 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimer.nc"
-inline static error_t DisseminationEngineImplP$TrickleTimer$start(uint16_t arg_0x7f7cb735bb40){
+inline static error_t DisseminationEngineImplP$TrickleTimer$start(uint16_t arg_0x7faddab65b40){
 #line 68
   unsigned char __nesc_result;
 #line 68
 
 #line 68
-  switch (arg_0x7f7cb735bb40) {
+  switch (arg_0x7faddab65b40) {
 #line 68
     case 243:
 #line 68
@@ -12918,7 +12912,7 @@ inline static error_t DisseminationEngineImplP$TrickleTimer$start(uint16_t arg_0
 #line 68
     default:
 #line 68
-      __nesc_result = DisseminationEngineImplP$TrickleTimer$default$start(arg_0x7f7cb735bb40);
+      __nesc_result = DisseminationEngineImplP$TrickleTimer$default$start(arg_0x7faddab65b40);
 #line 68
       break;
 #line 68
@@ -12980,13 +12974,13 @@ static inline error_t DisseminationEngineImplP$DisseminatorControl$default$start
 }
 
 # 95 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/StdControl.nc"
-inline static error_t DisseminationEngineImplP$DisseminatorControl$start(uint16_t arg_0x7f7cb735ae40){
+inline static error_t DisseminationEngineImplP$DisseminatorControl$start(uint16_t arg_0x7faddab63e40){
 #line 95
   unsigned char __nesc_result;
 #line 95
 
 #line 95
-  switch (arg_0x7f7cb735ae40) {
+  switch (arg_0x7faddab63e40) {
 #line 95
     case /*EnvAppC.DisseminatorC*/DisseminatorC$0$TIMER_ID:
 #line 95
@@ -12996,7 +12990,7 @@ inline static error_t DisseminationEngineImplP$DisseminatorControl$start(uint16_
 #line 95
     default:
 #line 95
-      __nesc_result = DisseminationEngineImplP$DisseminatorControl$default$start(arg_0x7f7cb735ae40);
+      __nesc_result = DisseminationEngineImplP$DisseminatorControl$default$start(arg_0x7faddab63e40);
 #line 95
       break;
 #line 95
@@ -13510,9 +13504,9 @@ static inline void /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/T
 }
 
 # 90 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/net/TrickleTimer.nc"
-inline static void /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$TrickleTimer$fired(uint8_t arg_0x7f7cb71f3aa0){
+inline static void /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$TrickleTimer$fired(uint8_t arg_0x7fadda9fcaa0){
 #line 90
-  switch (arg_0x7f7cb71f3aa0) {
+  switch (arg_0x7fadda9fcaa0) {
 #line 90
     case /*EnvAppC.DisseminatorC*/DisseminatorC$0$TIMER_ID:
 #line 90
@@ -13522,7 +13516,7 @@ inline static void /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/T
 #line 90
     default:
 #line 90
-      /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$TrickleTimer$default$fired(arg_0x7f7cb71f3aa0);
+      /*DisseminationTimerP.TrickleTimerMilliC.TrickleTimerImplP*/TrickleTimerImplP$0$TrickleTimer$default$fired(arg_0x7fadda9fcaa0);
 #line 90
       break;
 #line 90
@@ -13735,7 +13729,7 @@ static inline void /*CtpP.Forwarder*/CtpForwardingEngineP$0$CtpPacket$setEtx(mes
 # 81 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Queue.nc"
 inline static /*CtpP.Forwarder*/CtpForwardingEngineP$0$SendQueue$t  /*CtpP.Forwarder*/CtpForwardingEngineP$0$SendQueue$dequeue(void ){
 #line 81
-  struct __nesc_unnamed4339 *__nesc_result;
+  struct __nesc_unnamed4338 *__nesc_result;
 #line 81
 
 #line 81
@@ -13779,7 +13773,7 @@ static inline /*CtpP.SendQueueP*/QueueC$0$queue_t /*CtpP.SendQueueP*/QueueC$0$Qu
 # 73 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Queue.nc"
 inline static /*CtpP.Forwarder*/CtpForwardingEngineP$0$SendQueue$t  /*CtpP.Forwarder*/CtpForwardingEngineP$0$SendQueue$head(void ){
 #line 73
-  struct __nesc_unnamed4339 *__nesc_result;
+  struct __nesc_unnamed4338 *__nesc_result;
 #line 73
 
 #line 73
@@ -14423,9 +14417,9 @@ static inline void SimSchedulerBasicP$TaskBasic$default$runTask(uint8_t id)
 }
 
 # 75 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/TaskBasic.nc"
-inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0x7f7cb7b74020){
+inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0x7faddb37d020){
 #line 75
-  switch (arg_0x7f7cb7b74020) {
+  switch (arg_0x7faddb37d020) {
 #line 75
     case EnvC$readTemperature:
 #line 75
@@ -14531,7 +14525,7 @@ inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0x7f7cb7b740
 #line 75
     default:
 #line 75
-      SimSchedulerBasicP$TaskBasic$default$runTask(arg_0x7f7cb7b74020);
+      SimSchedulerBasicP$TaskBasic$default$runTask(arg_0x7faddb37d020);
 #line 75
       break;
 #line 75
@@ -14715,9 +14709,9 @@ static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$d
 }
 
 # 83 "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/timer/Timer.nc"
-inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(uint8_t arg_0x7f7cb73f5950){
+inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(uint8_t arg_0x7faddabfd950){
 #line 83
-  switch (arg_0x7f7cb73f5950) {
+  switch (arg_0x7faddabfd950) {
 #line 83
     case 0U:
 #line 83
@@ -14751,7 +14745,7 @@ inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$f
 #line 83
     default:
 #line 83
-      /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(arg_0x7f7cb73f5950);
+      /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(arg_0x7faddabfd950);
 #line 83
       break;
 #line 83
@@ -18217,9 +18211,9 @@ static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone(uint8_
 }
 
 # 100 "/home/marco/tinyos-release-tinyos-2_1_2/tos/interfaces/Send.nc"
-static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(uint8_t arg_0x7f7cb72d2940, message_t * msg, error_t error){
+static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(uint8_t arg_0x7faddaada940, message_t * msg, error_t error){
 #line 100
-  switch (arg_0x7f7cb72d2940) {
+  switch (arg_0x7faddaada940) {
 #line 100
     case 0U:
 #line 100
@@ -18247,7 +18241,7 @@ static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(uint8_t arg_0x
 #line 100
     default:
 #line 100
-      /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone(arg_0x7f7cb72d2940, msg, error);
+      /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone(arg_0x7faddaada940, msg, error);
 #line 100
       break;
 #line 100
