@@ -7,15 +7,14 @@ module EnvRootC{
 		
 		interface Boot;
 		interface Timer<TMilli>;
-		interface DisseminationUpdate<collect_t> as CollectUpdate;
-		
-		interface StdControl as CollectionControl;
-		interface StdControl as DisseminationControl;
-		interface RootControl;
-		interface Receive as AvgReceive;
-		
+
+		interface Receive;
+		interface AMPacket;
+		interface AMSend;
+		interface Packet;
+				
 		interface SplitControl as RadioControl;
-		interface LowPowerListening;
+
 		
 	}
 }
@@ -23,6 +22,8 @@ module EnvRootC{
 implementation{
 	
 	uint32_t counter = 0;
+	message_t pkt;
+	bool busy = FALSE;
 	
 event void Boot.booted()
   {
@@ -30,16 +31,10 @@ event void Boot.booted()
   }
   
 event void RadioControl.startDone(error_t error) {
-    /* Once the radio has started, we can setup low-power listening, and
-       start the collection and dissemination services. Additionally, we
-       set ourselves as the (sole) root for the avg dissemination
-       tree */
+   
     if (error == SUCCESS)
       {
-	call LowPowerListening.setLocalWakeupInterval(512);
-	call DisseminationControl.start();
-	call CollectionControl.start();
-	call RootControl.setRoot();
+	//call RootControl.setRoot();
 	call Timer.startPeriodic(TMILLI_PERIOD);
       }
   }
@@ -48,19 +43,44 @@ event void RadioControl.stopDone(error_t error) { }
 
 event void Timer.fired(){
 		counter++;
-		collect_t *newCollect.msg_id = counter;
-		call CollectUpdate.change(newCollect);
+		if (!busy) {
+      CollectMsg* cmpkt = 
+	(CollectMsg*)(call Packet.getPayload(&pkt, sizeof(CollectMsg)));
+      if (cmpkt == NULL) return;
+      cmpkt->sender_id = TOS_NODE_ID;
+      cmpkt->msg_id = counter;
+	  
+      if (call AMSend.send(AM_BROADCAST_ADDR,
+          &pkt, sizeof(CollectMsg)) == SUCCESS) {
+        busy = TRUE;
+	dbg("default","%s | Sent collect message with id=%d from %d\n", sim_time_string(), 
+	    counter, TOS_NODE_ID);
+      }
+    }
+
 }
 
-event message_t *AvgReceive.receive(message_t* msg, void* payload, uint8_t len){
+event message_t *Receive.receive(message_t* msg, void* payload, uint8_t len){
 	
-	avg_t *newAvg = payload;
-	
-	if(len == sizeof(*newAvg){
-	
-	dbg("default","%s | Node %d recived this values:\nFrom: %d, T=%d, H=%d", sim_time_string(), TOS_NODE_ID, newAvg->node_id, newAvg -> temperature, newAvg -> humidity);
+	am_addr_t = sourceAddr;
+
+    if (len == sizeof(AvgMsg)) {
+      AvgMsg* avgpkt = (AvgMsg*)payload;
+      
+      sourceAddr = call AMPacket.source(msg);
+	  uint8_t avgH = avgpkt->humidity;
+	  uint8_t avgT = avgpkt->temperature;
+	  uint32_t local_id = avgpkt->local_id;
+      dbg("default","%s | Received from %d, avgH = %d, avgT = %d (local_id=%d)\n", sim_time_string(), 
+	  sourceAddr, avgH, avgT, local_id);
+    }
+    return msg;
 	
 	}
 }
+
+event void AMSend.sendDone(message_t* msg, error_t err) {
+    if (&pkt == msg) busy = FALSE;
+  }
 	
 }

@@ -2,23 +2,23 @@ configuration EnvRootAppC{}
 
 implementation{
 
-	components EnvRootAppC MainC, ActiveMessageC;
+	components EnvRootC, MainC, ActiveMessageC;
+	components new TimerMilliC() as MyTimer;
 	
-	components CC2420ActiveMessageC as Radio;
+	components ActiveMessageC;
 	
 	EnvRootC.Boot -> MainC;
 	EnvRootC.RadioControl -> ActiveMessageC;
-	EnvRootC.LowPowerListening -> Radio;
-	
-	components DisseminationC;
-	EnvRootC.DisseminationControl -> DisseminationC;
-	
-	components new DisseminatorC (collect_t, DIS_COLLECT);
-	EnvRootC.CollectUpdate -> DisseminatorC;
-	
-	components CollectionC;
-	EnvRootC.CollectionControl -> CollectionC;
-	EnvRootC.RootControl -> CollectionC;
-	EnvRootC.AvgReceive -> CollectionC.Receive[COL_AVG];
 
+	EnvC.Timer -> MyTimer;
+
+	components new AMSenderC();
+	components new AMReceiverC();
+	
+	EnvC.RadioControl -> ActiveMessageC;
+	EnvC.AMPacket -> AMSenderC;
+	EnvC.Receive -> AMReceiverC;
+	EnvC.AMSend -> AMSenderC;
+	EnvC.Packet -> AMSenderC;
+	
 }
