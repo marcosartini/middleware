@@ -26,9 +26,11 @@ implementation{
 	
 	bool busy = FALSE;
 	
-	collect_t collect;
-	message_t avgMsg;
-	
+//	collect_t collect;
+//	message_t avgMsg;
+
+	message_t pkt;
+
 	uint32_t local_id=0;
 	
 	am_addr_t prec_node;
@@ -105,13 +107,13 @@ task void forwardCollect (){
 }
 
 
-task void forwardAverage (){
-	
+task void forwardAverage(){
+	uint32_t from_id;
 	if (!busy) {
       AvgMsg* avgpkt = 
 	(AvgMsg*)(call Packet.getPayload(&pkt, sizeof(AvgMsg)));
       if (avgpkt == NULL) return;
-		uint32_t from_id=avgpkt->node_id;
+		from_id=avgpkt->node_id;
       if (call AMSend.send(prec_node,
           &pkt, sizeof(AvgMsg)) == SUCCESS) {
         busy = TRUE;
@@ -154,15 +156,16 @@ event void Humidity.readDone(error_t err, uint16_t val){
 	}
 }
 
-event message_t * ReceiveCollect.receive(message_t * msg, void* payload, uint8_t len){
-	
+event message_t * Receive.receive(message_t * msg, void* payload, uint8_t len){
+	CollectMsg* cmpkt;
 	 am_addr_t sourceAddr;
+	am_addr_t from;
     if (len == sizeof(CollectMsg)) {
-      CollectMsg* cmpkt = (CollectMsg*)payload;
+      cmpkt = (CollectMsg*)payload;
 
       sourceAddr = call AMPacket.source(msg);
-      dbg("default","%s | Received from %d, setting Leds <- %d\n", sim_time_string(), 
-	  sourceAddr, cmpkt->counter & 0x07);
+      dbg("default","%s | Received from %d, collecd with id= %d\n", sim_time_string(), 
+	  sourceAddr, cmpkt->msg_id);
 	  
 	  //controlla se è successivo
 	  if(cmpkt -> msg_id > msg_counter){
@@ -180,15 +183,15 @@ event message_t * ReceiveCollect.receive(message_t * msg, void* payload, uint8_t
 	else if (len == sizeof(AvgMsg)) {
       AvgMsg* avgpkt = (AvgMsg*)payload;
 
-      dbg("default","%s | Received from %d, setting Leds <- %d\n", sim_time_string(), 
-	  sourceAddr, cmpkt->counter & 0x07);
+      dbg("default","%s | Received from %d, avg\n", sim_time_string(), 
+	  sourceAddr );
 	  
 	  //se è indirizzato a lui (magari se ne accorge da solo)
-	  post forwardAvg();
+	  post forwardAverage();
     }
     return msg;
 	
-	am_addr_t from = call AMPacket.source(msg); //get the sender of the message
+	from = call AMPacket.source(msg); //get the sender of the message
 	//sensor_reading_t* data = (sensor_reading_t*)payload; //serve?
 	
 	/*

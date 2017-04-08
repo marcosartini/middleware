@@ -1,5 +1,5 @@
 #include "Timer.h"
-#include "./Nodes/environment.h"
+#include "../Nodes/environment.h"
 
 module EnvRootC{
 	
@@ -62,22 +62,25 @@ event void Timer.fired(){
 
 event message_t *Receive.receive(message_t* msg, void* payload, uint8_t len){
 	
-	am_addr_t = sourceAddr;
+	am_addr_t sourceAddr;
+	uint8_t avgH;
+	uint8_t avgT;
+	uint32_t local_id;
 
     if (len == sizeof(AvgMsg)) {
       AvgMsg* avgpkt = (AvgMsg*)payload;
       
       sourceAddr = call AMPacket.source(msg);
-	  uint8_t avgH = avgpkt->humidity;
-	  uint8_t avgT = avgpkt->temperature;
-	  uint32_t local_id = avgpkt->local_id;
+	  avgH = avgpkt->humidity;
+	  avgT = avgpkt->temperature;
+	  local_id = avgpkt->local_id;
       dbg("default","%s | Received from %d, avgH = %d, avgT = %d (local_id=%d)\n", sim_time_string(), 
 	  sourceAddr, avgH, avgT, local_id);
     }
     return msg;
 	
-	}
 }
+
 
 event void AMSend.sendDone(message_t* msg, error_t err) {
     if (&pkt == msg) busy = FALSE;

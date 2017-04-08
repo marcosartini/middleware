@@ -17,8 +17,8 @@ implementation {
 	EnvC.Temperature -> TSensor;
 	EnvC.Humidity -> HSensor;
 
-	components new AMSenderC();
-	components new AMReceiverC();
+	components new AMSenderC(AM_ENV);
+	components new AMReceiverC(AM_ENV);
 	
 	EnvC.RadioControl -> ActiveMessageC;
 	EnvC.AMPacket -> AMSenderC;

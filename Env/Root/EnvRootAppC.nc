@@ -1,3 +1,6 @@
+#include "Timer.h"
+#include "../Nodes/environment.h"
+
 configuration EnvRootAppC{}
 
 implementation{
@@ -5,20 +8,19 @@ implementation{
 	components EnvRootC, MainC, ActiveMessageC;
 	components new TimerMilliC() as MyTimer;
 	
-	components ActiveMessageC;
 	
 	EnvRootC.Boot -> MainC;
 	EnvRootC.RadioControl -> ActiveMessageC;
 
-	EnvC.Timer -> MyTimer;
+	EnvRootC.Timer -> MyTimer;
 
-	components new AMSenderC();
-	components new AMReceiverC();
+	components new AMSenderC(AM_ENV);
+	components new AMReceiverC(AM_ENV);
 	
-	EnvC.RadioControl -> ActiveMessageC;
-	EnvC.AMPacket -> AMSenderC;
-	EnvC.Receive -> AMReceiverC;
-	EnvC.AMSend -> AMSenderC;
-	EnvC.Packet -> AMSenderC;
+	EnvRootC.RadioControl -> ActiveMessageC;
+	EnvRootC.AMPacket -> AMSenderC;
+	EnvRootC.Receive -> AMReceiverC;
+	EnvRootC.AMSend -> AMSenderC;
+	EnvRootC.Packet -> AMSenderC;
 	
 }
