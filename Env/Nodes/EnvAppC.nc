@@ -5,7 +5,8 @@ configuration EnvAppC{}
 implementation {
 	
 	components EnvC, ActiveMessageC, MainC, new TimerMilliC() as MyTimer;
-	
+		
+
 	components ActiveMessageC as Radio;
 	
 	EnvC.Boot -> MainC.Boot;
@@ -26,6 +27,15 @@ implementation {
 	EnvC.AMSend -> AMSenderC;
 	EnvC.Packet -> AMSenderC;
 	
+
+	components new TimerMilliC() as RootTimer;
+	EnvC.RootTimer -> RootTimer;
+
+	components new TimerMilliC() as WaitTimer;
+	EnvC.WaitTimer -> WaitTimer;
+
+	components RandomC;
+	EnvC.Random -> RandomC;
 	
 	
 }
