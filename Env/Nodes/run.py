@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
-N_MOTES = 3
+N_MOTES = 20
 DBG_CHANNELS = "default error"
-SIM_TIME = 50
+SIM_TIME = 200
 TOPO_FILE = "linkgain.out"
 #NOISE_FILE = "/opt/tinyos-2.1.0/tos/lib/tossim/noise/casino-lab.txt"
 NOISE_FILE = "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/noise/meyer-heavy.txt"
@@ -47,6 +47,7 @@ for line in lines:
 for i in range (0, N_MOTES):
     time=i * t.ticksPerSecond() / 100
     m=t.getNode(i)
+    time=0
     m.bootAtTime(time)
     m.createNoiseModel()
     print "Booting ", i, " at ~ ", time*1000/t.ticksPerSecond(), "ms"

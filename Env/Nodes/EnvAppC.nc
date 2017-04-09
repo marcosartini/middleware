@@ -34,6 +34,12 @@ implementation {
 	components new TimerMilliC() as WaitTimer;
 	EnvC.WaitTimer -> WaitTimer;
 
+	components new TimerMilliC() as ForwardTimer;
+	EnvC.ForwardTimer -> ForwardTimer;
+
+	components new TimerMilliC() as ForwardAvgTimer;
+	EnvC.ForwardAvgTimer -> ForwardAvgTimer;
+
 	components RandomC;
 	EnvC.Random -> RandomC;
 	

@@ -20,6 +20,8 @@ module EnvC{
 
 		interface Timer<TMilli> as RootTimer;
 		interface Timer<TMilli> as WaitTimer;
+		interface Timer<TMilli> as ForwardTimer;
+		interface Timer<TMilli> as ForwardAvgTimer;
 		
 		interface Random;
 
@@ -35,8 +37,12 @@ implementation{
 //	message_t avgMsg;
 
 	message_t pkt;
+//	AvgMsg* avgpkt;
+//	CollectMsg* cmpkt;
+	CollectMsg collectpkt;
+	AvgMsg avgmsgpkt;
 
-	uint16_t local_id=1;
+	uint16_t local_id=0;
 	
 	am_addr_t prec_node=0;
 	uint16_t msg_counter=0;
@@ -46,8 +52,8 @@ implementation{
 	uint16_t sumH = 0;
 	uint16_t nH=0; //number of humidity reads
 	
-	float avgT = 0;
-	float avgH = 0;
+	uint16_t avgT = 0;
+	uint16_t avgH = 0;
 
 	uint32_t counter = 0;
 	uint16_t numberRnd=0;
@@ -68,7 +74,7 @@ task void sendDataAverage (){
 	
 	avgT = sumT/nT; 
 	avgH = sumH/nH; 
-	dbg("default","%s | Node %d computed averages. AvgT = %d AvgH = %d\n", sim_time_string(), TOS_NODE_ID, avgT, avgH);
+	dbg("default","%s | Node %d computed averages.\tAvgT = %d\tAvgH = %d\n", sim_time_string(), TOS_NODE_ID, avgT, avgH);
 
 	
 	if (!busy) {
@@ -77,7 +83,6 @@ task void sendDataAverage (){
 			(AvgMsg*)(call Packet.getPayload(&pkt, sizeof(AvgMsg)));
       		if (avgpkt == NULL) return;
 		local_id++;
-		dbg("default", "Incremented local_id=%d\n", local_id);
       		avgpkt->node_id = TOS_NODE_ID;
       		avgpkt->humidity = avgH;
 	  	avgpkt->temperature = avgT;
@@ -85,8 +90,8 @@ task void sendDataAverage (){
       		if (call AMSend.send(prec_node,
          			 &pkt, sizeof(AvgMsg)) == SUCCESS) {
         		busy = TRUE;
-			dbg("default","%s | Sent AvgT = %d AvgH = %d from node %d\n", sim_time_string(), 
-	    			avgH, avgT, TOS_NODE_ID);
+			dbg("default","%s | Node %d sent avgmsg local_id=%d to node %d.\tAvgT = %d\tAvgH = %d\n", sim_time_string(),  TOS_NODE_ID,avgpkt->local_id,prec_node,
+	    			avgpkt->humidity, avgpkt->temperature);
       		
 		sumH = 0;
 		sumT = 0;
@@ -109,12 +114,12 @@ task void forwardCollect (){
 			(CollectMsg*)(call Packet.getPayload(&pkt, sizeof(CollectMsg)));
       		if (cmpkt == NULL) return;
       		cmpkt->sender_id = TOS_NODE_ID;
-	  
+	  	cmpkt->msg_id = collectpkt.msg_id; 
       		if (call AMSend.send(AM_BROADCAST_ADDR,
           			&pkt, sizeof(CollectMsg)) == SUCCESS) {
         		busy = TRUE;
-			dbg("default","%s | Forwarded collect message from node %d to broacast\n", sim_time_string(), 
-	    			TOS_NODE_ID);
+			dbg("default","%s | Node %d forwards collect message (id=%d) to broacast\n", sim_time_string(), 
+	    			TOS_NODE_ID, cmpkt -> msg_id);
       }
     }
 	
@@ -129,12 +134,17 @@ task void forwardAverage(){
        		avgpkt = 
 			(AvgMsg*)(call Packet.getPayload(&pkt, sizeof(AvgMsg)));
       	if (avgpkt == NULL) return;
-	from_id=avgpkt->node_id;
+		from_id=avgmsgpkt.node_id;
+	avgpkt->temperature=avgmsgpkt.temperature;
+	avgpkt->humidity=avgmsgpkt.humidity;
+	avgpkt->local_id=avgmsgpkt.local_id;
+	avgpkt->node_id=avgmsgpkt.node_id;
+	
       	if (call AMSend.send(prec_node,
           		&pkt, sizeof(AvgMsg)) == SUCCESS) {
         	busy = TRUE;
-		dbg("default","%s | Forwarded average message from node %d through node %d\n", sim_time_string(), 
-	    		from_id, TOS_NODE_ID);
+		dbg("default","%s | Node %d forwards average message from %d to node %d\n", sim_time_string(), 
+	    		TOS_NODE_ID, avgpkt->node_id, prec_node);
       }
     }
 	
@@ -150,7 +160,8 @@ event void Boot.booted(){
 	//Starting the timer
 	call Timer.startPeriodic(TMILLI_PERIOD);
 
-	call RootTimer.startPeriodic(TMILLI_PERIOD * 3);
+	call RootTimer.startPeriodic(TMILLI_COLLECT);
+	
 }
 
 event void Timer.fired(){
@@ -159,38 +170,43 @@ event void Timer.fired(){
 }
 
 event void RootTimer.fired(){
-	CollectMsg* cmpkt;
-	counter++;	
 
-	if (!busy) {
-      		cmpkt = 
-			(CollectMsg*)(call Packet.getPayload(&pkt, sizeof(CollectMsg)));
-      		if (cmpkt == NULL) return;
-      		cmpkt->sender_id = TOS_NODE_ID;
-      		cmpkt->msg_id = counter;
-	  
-      		if (call AMSend.send(AM_BROADCAST_ADDR,
-          			&pkt, sizeof(CollectMsg)) == SUCCESS) {
-        		busy = TRUE;
-			dbg("default","%s | Sent collect message with id=%d from %d\n", sim_time_string(), 
-	    			counter, TOS_NODE_ID);
-      }
-    }
+	CollectMsg* cmpkt;
+
+	if(TOS_NODE_ID==0){
+
+		counter++;	
+
+		if (!busy) {
+	      		cmpkt = 
+				(CollectMsg*)(call Packet.getPayload(&pkt, sizeof(CollectMsg)));
+	      		if (cmpkt == NULL) return;
+	      		cmpkt->sender_id = TOS_NODE_ID;
+	      		cmpkt->msg_id = counter;
+		  
+	      		if (call AMSend.send(AM_BROADCAST_ADDR,
+		  			&pkt, sizeof(CollectMsg)) == SUCCESS) {
+				busy = TRUE;
+				dbg("default","%s | ROOT sent collect message with id=%d\n", sim_time_string(), 
+		    			cmpkt->msg_id);
+	      }
+	    }
+	}
 }
 
 event void Temperature.readDone(error_t err, uint16_t val){
 	if(err == SUCCESS){
-		sumT = sumT + val;
+		sumT = sumT + (val%12+1);
 		nT++;
-		dbg("default","%s | Node %d read temperature. Sum = %d. Number = %d\n", sim_time_string(), TOS_NODE_ID, sumT, nT);
+	//	dbg("default","%s | Node %d read temperature.\tSum = %d\tNumber = %d\n", sim_time_string(), TOS_NODE_ID, sumT, nT);
 	}
 }
 
 event void Humidity.readDone(error_t err, uint16_t val){
 	if(err == SUCCESS){
-		sumH = sumH + val;
+		sumH = sumH + (val%12+1);
 		nH++;
-		dbg("default","%s | Node %d read humidity. Sum = %d. Number = %d\n", sim_time_string(), TOS_NODE_ID, sumH, nH);
+	//	dbg("default","%s | Node %d read humidity.\tSum = %d\tNumber = %d\n", sim_time_string(), TOS_NODE_ID, sumH, nH);
 	}
 }
 
@@ -198,44 +214,56 @@ event message_t * Receive.receive(message_t * msg, void* payload, uint8_t len){
 	CollectMsg* cmpkt;
 	AvgMsg* avgpkt;
 	am_addr_t sourceAddr;
-	uint16_t loc_id=-1;
+	am_addr_t destAddr;
+	sourceAddr = call AMPacket.source(msg);
+	destAddr=call AMPacket.destination(msg);
 
 	if(TOS_NODE_ID == 0){
 	
 		if (len == sizeof(AvgMsg)) {
      			avgpkt = (AvgMsg*)payload;
-      			sourceAddr = call AMPacket.source(msg);
-	  		avgH = avgpkt->humidity;
-	  		avgT = avgpkt->temperature;
-	  		loc_id = avgpkt->local_id;
-      			dbg("default","%s | Received from %d, avgH = %d, avgT = %d, (local_id=%d)\n", sim_time_string(), 
-	  			sourceAddr, avgH, avgT, loc_id);
+      			
+
+      			dbg("default","%s | ROOT Received from %d, about node %d,\tavgH = %d,\tavgT = %d,\t(local_id=%d)\n", sim_time_string(), 
+	  			sourceAddr, avgpkt->node_id, avgpkt->humidity, avgpkt->temperature, avgpkt->local_id);
     		}
     		return msg;
 	}
 	else{ 
-		sourceAddr = call AMPacket.source(msg);
+		
    		if (len == sizeof(CollectMsg)) {
       			cmpkt = (CollectMsg*)payload;
      			dbg("default","%s | Node %d: Received from %d, collect with id= %d\n", sim_time_string(), TOS_NODE_ID,  sourceAddr, cmpkt->msg_id);
 	  
 	  		//controlla se è successivo
 	  		if(cmpkt -> msg_id > msg_counter){
+				prec_node = sourceAddr;
 		  		msg_counter = cmpkt -> msg_id;
-		  		prec_node = sourceAddr;
-	  			post forwardCollect();
-				numberRnd = (call Random.rand16() % 100) + 1; 
-				call WaitTimer.startOneShot(100+numberRnd);
+		  		collectpkt = *cmpkt;
+
+				//post forwardCollect();
+				//numberRnd = (call Random.rand16() % 100) + 1; 
+				//call ForwardTimer.startOneShot(300+numberRnd); 
+				call ForwardTimer.startOneShot(50+TOS_NODE_ID*15);
+				//post sendDataAverage();
+				//numberRnd = (call Random.rand16() % 177) + 1; 
+				//call WaitTimer.startOneShot(2000+numberRnd);
+				call WaitTimer.startOneShot(1300+TOS_NODE_ID*237);
 	  			//dbg("default", "Random %d\n", numberRnd);
 	  		}
     		}
 		else if (len == sizeof(AvgMsg)) {
       			avgpkt = (AvgMsg*)payload;
-
-      			dbg("default","%s | Node %d: Received from %d, avg to be forwarded to %d\n", sim_time_string(), sourceAddr, prec_node );
-	  
-	  		//se è indirizzato a lui 
-	  		post forwardAverage();
+			avgmsgpkt=*avgpkt;
+      			dbg("default","%s | Node %d: Received from %d, avg about %d to be forwarded to %d\n", sim_time_string(), TOS_NODE_ID, sourceAddr, avgpkt->node_id, prec_node );
+			
+			if(destAddr == TOS_NODE_ID){
+		  		//numberRnd = (call Random.rand16() % 177) + 1; 
+				//call ForwardAvgTimer.startOneShot(1000+numberRnd);
+				call ForwardAvgTimer.startOneShot(50);
+		  		//se è indirizzato a lui 
+		  		//post forwardAverage();
+			}
     		}
     	return msg;
 
@@ -268,6 +296,13 @@ event void AMSend.sendDone(message_t *msg, error_t ok){
 
 event void WaitTimer.fired(){
 	post sendDataAverage();
+}
+
+event void ForwardTimer.fired(){
+	post forwardCollect();
+}
+event void ForwardAvgTimer.fired(){
+	post forwardAverage();
 }
 
 }
