@@ -14,16 +14,16 @@ PL_D0 = 55.4;
 NOISE_FLOOR = -105.0; 
 
 % High asymmetry
-% S11 = 3.7; 
-% S12 = -3.3; 
-% S21 = -3.3; 
-% S22 = 6.0; 
+ S11 = 3.7; 
+ S12 = -3.3; 
+ S21 = -3.3; 
+ S22 = 6.0; 
 
 % Low asymmetry
-S11 = 0.9; 
-S12 = -0.7; 
-S21 = -0.7; 
-S22 = 1.2; 
+%S11 = 0.9; 
+%S12 = -0.7; 
+%S21 = -0.7; 
+%S22 = 1.2; 
 
 WHITE_GAUSSIAN_NOISE = 4; 
 
@@ -36,12 +36,12 @@ WHITE_GAUSSIAN_NOISE = 4;
 % - RANDOM (3) 
 % - FILE (4) 
 
-TOPOLOGY = 1; 
+TOPOLOGY = 1; %1
 NUMBER_OF_NODES = 225; 
 
 GRID_UNIT = 1.0; 
 
 TOPOLOGY_FILE = topology; 
 
-% TERRAIN_DIMENSIONS_X = 20.0; 
-% TERRAIN_DIMENSIONS_Y = 20.0;
+ TERRAIN_DIMENSIONS_X = 20.0; 
+ TERRAIN_DIMENSIONS_Y = 20.0;

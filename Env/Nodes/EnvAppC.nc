@@ -4,7 +4,7 @@ configuration EnvAppC{}
 
 implementation {
 	
-	components EnvC, ActiveMessageC, MainC, new TimerMilliC() as MyTimer;
+	components EnvC, MainC, new TimerMilliC() as MyTimer;
 		
 
 	components ActiveMessageC as Radio;
@@ -20,13 +20,12 @@ implementation {
 
 	components new AMSenderC(AM_ENV);
 	components new AMReceiverC(AM_ENV);
-	
-	EnvC.RadioControl -> ActiveMessageC;
+
+	EnvC.RadioControl -> Radio;
 	EnvC.AMPacket -> AMSenderC;
 	EnvC.Receive -> AMReceiverC;
 	EnvC.AMSend -> AMSenderC;
 	EnvC.Packet -> AMSenderC;
-	
 
 	components new TimerMilliC() as RootTimer;
 	EnvC.RootTimer -> RootTimer;

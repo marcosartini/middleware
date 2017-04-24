@@ -33,14 +33,16 @@ implementation{
 	
 	bool busy = FALSE;
 	
-//	collect_t collect;
-//	message_t avgMsg;
-
 	message_t pkt;
-//	AvgMsg* avgpkt;
-//	CollectMsg* cmpkt;
 	CollectMsg collectpkt;
 	AvgMsg avgmsgpkt;
+
+	uint16_t received_counter = 0;
+	uint16_t received_sum = 0;
+	uint16_t received_max = 0;
+	uint16_t received_min = 65535;
+	
+	uint16_t tx_msgs = 0;
 
 	uint16_t local_id=0;
 	
@@ -74,7 +76,7 @@ task void sendDataAverage (){
 	
 	avgT = sumT/nT; 
 	avgH = sumH/nH; 
-	dbg("default","%s | Node %d computed averages.\tAvgT = %d\tAvgH = %d\n", sim_time_string(), TOS_NODE_ID, avgT, avgH);
+//	dbg("default","%s | Node %d computed averages.\tAvgT = %d\tAvgH = %d\n", sim_time_string(), TOS_NODE_ID, avgT, avgH);
 
 	
 	if (!busy) {
@@ -154,7 +156,7 @@ event void Boot.booted(){
 	dbg("default","%s | Node %d started\n", sim_time_string(), TOS_NODE_ID);
 	// Initialize app here
 	if(call RadioControl.start() != SUCCESS){
-		//call Leds.led0On();
+		dbgerror("error", "Error in booting");
 	}
 	
 	//Starting the timer
@@ -175,7 +177,21 @@ event void RootTimer.fired(){
 
 	if(TOS_NODE_ID==0){
 
-		counter++;	
+		if(received_counter != 0){
+
+			received_sum+=received_counter;
+			if(received_counter>received_max)
+				received_max=received_counter;
+			if (received_counter<received_min)
+				received_min=received_counter;
+			
+			
+			dbg("default","ROOT: received messages at previous collect: %d, in average -up to now- received: %f, max: %d, min: %d\n", received_counter, received_sum/(1.0*counter), received_max, received_min);
+		}
+		counter++;		
+		
+		//conta_msg_totali = 0;
+			
 
 		if (!busy) {
 	      		cmpkt = 
@@ -187,8 +203,10 @@ event void RootTimer.fired(){
 	      		if (call AMSend.send(AM_BROADCAST_ADDR,
 		  			&pkt, sizeof(CollectMsg)) == SUCCESS) {
 				busy = TRUE;
+				//conta_msg_totali++;
 				dbg("default","%s | ROOT sent collect message with id=%d\n", sim_time_string(), 
 		    			cmpkt->msg_id);
+				
 	      }
 	    }
 	}
@@ -223,6 +241,8 @@ event message_t * Receive.receive(message_t * msg, void* payload, uint8_t len){
 		if (len == sizeof(AvgMsg)) {
      			avgpkt = (AvgMsg*)payload;
       			
+      			received_counter++;
+      			
 
       			dbg("default","%s | ROOT Received from %d, about node %d,\tavgH = %d,\tavgT = %d,\t(local_id=%d)\n", sim_time_string(), 
 	  			sourceAddr, avgpkt->node_id, avgpkt->humidity, avgpkt->temperature, avgpkt->local_id);
@@ -233,7 +253,7 @@ event message_t * Receive.receive(message_t * msg, void* payload, uint8_t len){
 		
    		if (len == sizeof(CollectMsg)) {
       			cmpkt = (CollectMsg*)payload;
-     			dbg("default","%s | Node %d: Received from %d, collect with id= %d\n", sim_time_string(), TOS_NODE_ID,  sourceAddr, cmpkt->msg_id);
+     			//dbg("default","%s | Node %d: Received from %d, collect with id= %d\n", sim_time_string(), TOS_NODE_ID,  sourceAddr, cmpkt->msg_id);
 	  
 	  		//controlla se è successivo
 	  		if(cmpkt -> msg_id > msg_counter){
@@ -244,18 +264,21 @@ event message_t * Receive.receive(message_t * msg, void* payload, uint8_t len){
 				//post forwardCollect();
 				//numberRnd = (call Random.rand16() % 100) + 1; 
 				//call ForwardTimer.startOneShot(300+numberRnd); 
-				call ForwardTimer.startOneShot(50+TOS_NODE_ID*15);
+				call ForwardTimer.startOneShot(80+TOS_NODE_ID*15);
 				//post sendDataAverage();
 				//numberRnd = (call Random.rand16() % 177) + 1; 
 				//call WaitTimer.startOneShot(2000+numberRnd);
-				call WaitTimer.startOneShot(1300+TOS_NODE_ID*237);
+				//call WaitTimer.startOneShot(1300+TOS_NODE_ID*237);
+				//call WaitTimer.startOneShot(1300+TOS_NODE_ID*257+200/1.0*prec_node);
+				call WaitTimer.startOneShot(1300+TOS_NODE_ID*250);
+				//call WaitTimer.startOneShot(500+TOS_NODE_ID*250);
 	  			//dbg("default", "Random %d\n", numberRnd);
 	  		}
     		}
 		else if (len == sizeof(AvgMsg)) {
       			avgpkt = (AvgMsg*)payload;
 			avgmsgpkt=*avgpkt;
-      			dbg("default","%s | Node %d: Received from %d, avg about %d to be forwarded to %d\n", sim_time_string(), TOS_NODE_ID, sourceAddr, avgpkt->node_id, prec_node );
+ //     			dbg("default","%s | Node %d: Received from %d, avg about %d to be forwarded to %d\n", sim_time_string(), TOS_NODE_ID, sourceAddr, avgpkt->node_id, prec_node );
 			
 			if(destAddr == TOS_NODE_ID){
 		  		//numberRnd = (call Random.rand16() % 177) + 1; 
@@ -278,8 +301,11 @@ event void AMSend.sendDone(message_t *msg, error_t ok){
 
 //dbg("default","%s | Node %d AMSend.sendDone %s\n%s\n", sim_time_string(), TOS_NODE_ID, ;
 	
-	 if (&pkt == msg) busy = FALSE;
-	 
+	 if (&pkt == msg){
+		tx_msgs ++;
+		received_counter = 0;
+		busy = FALSE;
+	}
 
 	
 }
