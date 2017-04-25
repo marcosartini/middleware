@@ -1,22 +1,36 @@
 #!/usr/bin/python
 
+import os
+TOSDIR = os.getenv("TOSDIR") #here the path of the TOS directory in the system. Change if problems arise
+
 N_MOTES = 14 #14
-DBG_CHANNELS = "default error"
 SIM_TIME = 500 #500
+
+DBG_CHANNELS = "error" #add to this string: <radio> to see radio activity, <internal> to see data sampling
 TOPO_FILE = "linkgain.out"
-#NOISE_FILE = "/opt/tinyos-2.1.0/tos/lib/tossim/noise/casino-lab.txt"
-NOISE_FILE = "/home/marco/tinyos-release-tinyos-2_1_2/tos/lib/tossim/noise/meyer-heavy.txt"
+NOISE_FILE = TOSDIR+"/lib/tossim/noise/meyer-heavy.txt"
 
 from TOSSIM import *
 from tinyos.tossim.TossimApp import *
 from random import *
 import sys
 
+counter_root_prec = 1
+max_v = 0
+min_v = 2000
+max_msg = 0
+min_msg = 2000
+somma_totale = 0
+somma_parziale = 0
+ricevuti_root = 0
+ricevuti_tot = 0
+counter_root= 0
+collect_timer = 0
+
 n = NescApp("EnvC", "app.xml")
 vars = n.variables.variables()
 t = Tossim(vars) #[]
 r = t.radio()
-
 
 t.randomSeed(1)
 
@@ -55,16 +69,6 @@ for i in range (0, N_MOTES):
     m.createNoiseModel()
     print "Booting ", i, " at ~ ", time*1000/t.ticksPerSecond(), "ms"
 
-counter_root_prec = 1
-max_v = 0
-min_v = 100
-somma_totale = 0
-somma_parziale = 0
-ricevuti_root = 0
-ricevuti_tot = 0
-counter_root= 0
-collect_timer = 0
-
 ma = t.getNode(0)
 v = ma.getVariable("EnvC.counter")
 va = ma.getVariable("EnvC.received_counter")
@@ -96,7 +100,10 @@ while (time + SIM_TIME * t.ticksPerSecond() > t.time()):
             somma_parziale += vv.getData()
         somma_parziale -= somma_totale #toglie l'accumulo
         somma_totale+=somma_parziale
-
+        if (somma_parziale < min_msg):
+            min_msg = somma_parziale
+        if (somma_parziale > max_msg):
+            max_msg = somma_parziale
         print "\n\nCollect #",counter_root-1," | Root received from:", ricevuti_root, "motes, Exchanged messages:", somma_parziale, "\n\n"
         
 
@@ -107,8 +114,15 @@ avg=1.0*ricevuti_tot/(counter_root-1)
 print "\n##### RESULTS ANALYSIS #####\n"
 print "Simulation with 1 root mote and",N_MOTES-1, "scattered motes\n"
 
-print "Max responding motes:\t", max_v, "\t","{0:.2f}".format((1.0*max_v/(N_MOTES-1))*100), "%"
-print "Min responding motes:\t", min_v, "\t","{0:.2f}".format((1.0*min_v/(N_MOTES-1))*100), "%"
-print "In average responding:\t", avg, "\t","{0:.2f}".format((avg/(N_MOTES-1))*100), "%"
-print "Total exchanged messages:\t", somma_totale
-print "Average exchanged messages:\t", "{0:.2f}".format((1.0*somma_totale/counter_root)), "\n\n"
+print "Max responding motes:\t\t", max_v, "\t","{0:.2f}".format((1.0*max_v/(N_MOTES-1))*100), "%"
+print "Min responding motes:\t\t", min_v, "\t","{0:.2f}".format((1.0*min_v/(N_MOTES-1))*100), "%"
+print "Average responding motes:\t", "{0:.2f}".format(avg), "\t","{0:.2f}".format((avg/(N_MOTES-1))*100), "%  <---"
+print "Max exchanged messages:\t\t", max_msg
+print "Min exchanged messages:\t\t", min_msg
+print "Average exchanged messages:\t", "{0:.2f}".format((1.0*somma_totale/counter_root))
+print "Total exchanged messages:\t", somma_totale,"\n"
+
+if(max_v < N_MOTES-1):
+    print "Root never received data from all the scattered motes\n"
+else:
+    print "At least once, root received data from all the scattered motes\n"
